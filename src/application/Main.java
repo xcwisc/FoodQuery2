@@ -98,8 +98,16 @@ public class Main extends Application {
 					new Label("Fiber(g) "),
 					new Label("Protein(g) ");
 			
-	
-			
+	ObservableList<String> labelz = FXCollections.observableArrayList("Calories", "Fat(g)", "Carbs(g)", "Fiber(g)","Protein(g)");
+			ObservableList<String> comparors = FXCollections.observableArrayList(">","<","=");
+			ComboBox compar = new ComboBox(comparors);
+			Label selLabel = new Label("Find items with ");
+			TextField numSel = new TextField();
+			numSel.setPromptText("type amount");
+			ComboBox j = new ComboBox(labelz);
+			HBox filterHbox = new HBox();
+			filterHbox.getChildren().addAll(selLabel, j, compar,numSel);
+				
 			
 //			ListView<String> foodDetail = new ListView<String>();
 //			foodDetail.setOrientation(Orientation.HORIZONTAL);
@@ -110,7 +118,7 @@ public class Main extends Application {
 			foodItemsVbox.getChildren().addAll(
 					new Label("Available Food Items"),
 					foodDetailHbox,
-					foodItemSP);
+					foodItemSP, filterHbox);
 		
 			foodItemSP.setVbarPolicy(ScrollBarPolicy.ALWAYS);
 			
