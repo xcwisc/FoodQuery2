@@ -1,6 +1,8 @@
 package application;
 	
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Orientation;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -18,17 +20,19 @@ public class Main extends Application {
 			ToolBar toolbar = new ToolBar(label);
 			VBox foodItemsVbox = new VBox();
 			HBox foodDetailHbox = new HBox();
-			
-			
-			
+			/*ObservableList<String> names = FXCollections.observableArrayList("Item name",
+					"Brand", "Calories", "Fat(g)", "Carbs(g)", "Fiber(g)","Protein(g)");
+			ListView listname = new ListView(names);
+			listname.setOrientation(Orientation.HORIZONTAL);
+			*/
 			foodDetailHbox.getChildren().addAll(
-					new Label("Item name           "),
-					new Label("Brand               "),
-					new Label("Calories   "),
-					new Label("Fat(g)   "),
-					new Label("Carbs(g)   "),
-					new Label("Fiber(g)   "),
-					new Label("Protein(g)"));
+					new Label("Item name              "),
+					new Label("Brand                  "),
+					new Label("Calories     "),
+					new Label("Fat(g)       "),
+					new Label("Carbs(g)     "),
+					new Label("Fiber(g)     "),
+					new Label("Protein(g)   "));//listname);
 			
 			HBox foodHbox = new HBox();
 			foodHbox.getChildren().addAll(
