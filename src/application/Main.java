@@ -28,7 +28,7 @@ public class Main extends Application {
 
 			
 			
-			GridPane foodGridPane = new GridPane();
+			GridPane gridPane = new GridPane();
 			int counter = 0;
 			gridPane.add(new Label("Red Wine Vinegar"), 0, 0, 1, 1);
 			gridPane.add(new Label("Great Value"), 1, 0, 1, 1);
@@ -106,7 +106,8 @@ public class Main extends Application {
 			numSel.setPromptText("type amount");
 			ComboBox j = new ComboBox(labelz);
 			HBox filterHbox = new HBox();
-			filterHbox.getChildren().addAll(selLabel, j, compar,numSel);
+			Button selSubbutton = new Button("Submit");
+			filterHbox.getChildren().addAll(selLabel, j, compar, numSel, selSubbutton);
 				
 			
 //			ListView<String> foodDetail = new ListView<String>();
@@ -122,7 +123,7 @@ public class Main extends Application {
 		
 			foodItemSP.setVbarPolicy(ScrollBarPolicy.ALWAYS);
 			
-			foodItemSP.setContent(foodGridPane);
+			foodItemSP.setContent(gridPane);
 
 			root.setTop(toolbar);
 			root.setCenter(foodItemsVbox);
