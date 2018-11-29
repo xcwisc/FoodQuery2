@@ -18,7 +18,7 @@ public interface FoodDataADT<F extends FoodItem> {
      * 556540ff5d613c9d5f5935a9,Stewarts_PremiumDarkChocolatewithMintCookieCrunch,calories,280,fat,18,carbohydrate,34,fiber,3,protein,3
      * 
      * Note:
-     *     1. All the rows are in valid format.
+     *  1. All the rows are in valid format.
      *  2. All IDs are unique.
      *  3. Names can be duplicate.
      *  4. All columns are strictly alphanumeric (a-zA-Z0-9_).

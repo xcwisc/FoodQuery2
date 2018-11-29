@@ -1,3 +1,4 @@
+package application;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +25,8 @@ public class FoodItem {
      */
     public FoodItem(String id, String name) {
         // TODO : Complete
+    	this.id = id;
+    	this.name = name;
     }
     
     /**
@@ -42,7 +45,7 @@ public class FoodItem {
      */
     public String getID() {
         // TODO : Complete
-        return null;
+        return id;
     }
     
     /**
