@@ -19,12 +19,12 @@ public class TableViewWrapper {
         TableColumn itemNameCol = new TableColumn("Item Name");
         itemNameCol.setMinWidth(100);
         itemNameCol.setCellValueFactory(
-                new PropertyValueFactory<FoodItem, String>("name"));
+                new PropertyValueFactory<FoodItem, String>("itemName"));
  
         TableColumn brandCol = new TableColumn("Brand");
         brandCol.setMinWidth(100);
         brandCol.setCellValueFactory(
-                new PropertyValueFactory<FoodItem, String>("id"));
+                new PropertyValueFactory<FoodItem, String>("brand"));
         
         TableColumn calCol = new TableColumn("Calories");
 	    calCol.setMinWidth(100);

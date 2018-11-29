@@ -62,13 +62,16 @@ public class FoodItem {
         
     }
     
+   
+    
+    
     /**
      * Gets the name of the food item
      * 
      * @return name of the food item
      */
-    public String getName() {
-        return name;
+    public String getItemName() {
+        return itemName;
     }
 
     /**
@@ -76,9 +79,28 @@ public class FoodItem {
      * 
      * @return id of the food item
      */
-    public String getID() {
-        // TODO : Complete
-        return id;
+    public String getBrand() {
+        return brand;
+    }
+    
+    public String getCalories() {
+    	return calories;
+    }
+    
+    public String getFat() {
+    	return fat;
+    }
+    
+    public String getCarbs() {
+    	return carbs;
+    }
+    
+    public String getFiber() {
+    	return fiber;
+    }
+    
+    public String getProtein() {
+    	return protein;
     }
     
     /**
