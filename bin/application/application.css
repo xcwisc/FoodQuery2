@@ -1,1 +1,90 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+#note-label {
+	-fx-padding: 10 0 0 0;
+}
+
+#nav-bar {
+	-fx-background-color: #1b2c47;
+}
+
+#nav-bar-brand {
+	-fx-font: 32px "NTR", Helvetica, Arial, sans-serif;
+	-fx-text-fill: #dee1e5;
+	-fx-padding: 0 20 0 6;
+}
+
+
+#nav-bar-button{
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    -fx-font-family:"NTR", Helvetica, Arial, sans-serif;
+    -fx-font-size: 16;
+    -fx-text-fill: #dee1e5;
+    -fx-padding: 4 10 0 10;
+}
+
+
+
+#nav-bar-button:pressed {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+}
+
+#center-vbox {
+	-fx-padding: 10 10 0 10;
+}
+
+#meal-info {
+	-fx-padding: 10 10 0 0;
+}
+
+#title {
+	-fx-font: 22px "NTR", Helvetica, Arial, sans-serif;
+}
+
+#note-label {
+	-fx-font: 10px "NTR", Helvetica, Arial, sans-serif;
+}
+
+.combo-box .list-cell 
+{
+    -fx-background: white;
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-base-color;
+    -fx-padding: 6.5 0 2 7;
+    -fx-cell-size: 1.66667em; 
+}
+
+.combo-box-popup .list-view 
+{
+    -fx-background-color: white, white;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
+}    
+
+.combo-box-popup .list-view .list-cell 
+{
+    -fx-padding: 4 0 4 5;
+
+    /* No alternate highlighting */
+    -fx-background-color: white;
+}
+
+.combo-box-popup .list-view .list-cell:filled:selected, .combo-box-popup .list-view .list-cell:filled:selected:hover 
+{
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-selection-bar;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.combo-box-popup .list-view .list-cell:filled:hover 
+{
+    -fx-background-color: white;
+    -fx-text-fill: -fx-text-inner-color;
+}
+
+#filter-label {
+	-fx-padding: 5 0 0 0;
+}

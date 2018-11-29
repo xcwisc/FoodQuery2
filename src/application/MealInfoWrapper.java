@@ -15,10 +15,13 @@ public class MealInfoWrapper {
 	
 	public MealInfoWrapper(ObservableList<String> data) {
 		mealInfo = new VBox();
+		mealInfo.setId("meal-info");
 		this.data = data;
 		Label yourMealLabel = new Label("Your Meal");
+		yourMealLabel.setId("title");
 		
-		Label clickToRemoveLabel = new Label("Double click item to remove");
+		Label clickToRemoveLabel = new Label("(Double click item to remove)");
+		clickToRemoveLabel.setId("note-label");
 		ListView<String> list = new ListView<String>();
 		
 		list.setItems(data);
@@ -46,8 +49,7 @@ public class MealInfoWrapper {
 		
 		// add all elements into the vBox
 		mealInfo.getChildren().addAll(
-			yourMealLabel,
-			clickToRemoveLabel, 
+			new HBox(yourMealLabel, clickToRemoveLabel), 
 			list, calorieCounter, fatCounter, carbCounter, 
 			fiberCounter, proteinCounter, saveAndExit);
 	}

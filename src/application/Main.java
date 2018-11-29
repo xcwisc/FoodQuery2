@@ -44,7 +44,7 @@ public class Main extends Application {
 		try {
 			BorderPane root = new BorderPane();
 			// initialize all the wrappers
-			ToolBarWrapper toolBarWrapper = new ToolBarWrapper("MealPlan", "NTR", 32);
+			ToolBarWrapper toolBarWrapper = new ToolBarWrapper("MealPlan", primaryStage);
 			CenterVboxWrapper centerVboxWrapper = new CenterVboxWrapper(data, labelz, comparors, primaryStage);
 			MealInfoWrapper mealInfoWrapper = new MealInfoWrapper(items);
 

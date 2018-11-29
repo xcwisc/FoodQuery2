@@ -18,7 +18,8 @@ public class QueryBarWrapper {
 		this.comparors = comparors;
 		this.labelz = labelz;
 		ComboBox compar = new ComboBox(comparors);
-		Label selLabel = new Label("  Display food item with: ");
+		Label selLabel = new Label("Display food item with: ");
+		selLabel.setId("filter-label");
 		TextField numSel = new TextField();
 		numSel.setPromptText("type amount");
 		ComboBox j = new ComboBox(labelz);
