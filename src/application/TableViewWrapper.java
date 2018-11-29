@@ -26,8 +26,36 @@ public class TableViewWrapper {
         brandCol.setCellValueFactory(
                 new PropertyValueFactory<FoodItem, String>("id"));
         
+        TableColumn calCol = new TableColumn("Calories");
+	    calCol.setMinWidth(100);
+	    calCol.setCellValueFactory(
+	            new PropertyValueFactory<FoodItem, String>("calories"));
+	     
+	    TableColumn fatCol = new TableColumn("Fat(g)");
+	    fatCol.setMinWidth(100);
+	    fatCol.setCellValueFactory(
+	            new PropertyValueFactory<FoodItem, String>("fat"));
+	     
+	    TableColumn carbsCol = new TableColumn("Carbs(g)");
+	    carbsCol.setMinWidth(100);
+	    carbsCol.setCellValueFactory(
+	            new PropertyValueFactory<FoodItem, String>("carbs"));
+	      
+	    TableColumn fiberCol = new TableColumn("Fiber(g)");
+	    fiberCol.setMinWidth(100);
+	    fiberCol.setCellValueFactory(
+	            new PropertyValueFactory<FoodItem, String>("fiber"));
+	      
+	    TableColumn proteinCol = new TableColumn("Protein(g)");
+	    proteinCol.setMinWidth(100);
+	    proteinCol.setCellValueFactory(
+	            new PropertyValueFactory<FoodItem, String>("protein"));
+      
+      
+        
         table.setItems(data);
-        table.getColumns().addAll(itemNameCol, brandCol);
+        table.getColumns().addAll(itemNameCol, brandCol, calCol, fatCol, carbsCol, fiberCol, proteinCol);
+        
  
 	}
 	

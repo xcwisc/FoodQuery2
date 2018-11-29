@@ -15,6 +15,33 @@ public class FoodItem {
     // The id of the food item.
     private String id;
 
+    // The name of the food item.
+    private String itemName;
+
+    // The id of the food item.
+    private String brand;
+    
+    private String calories;
+    
+    private String fat;
+    
+    private String carbs;
+    
+    private String fiber;
+    
+    private String protein;
+
+    
+    //String calories, String fat, String carbs, String fiber, String protein
+    
+    /**
+     * Constructor
+     * @param name name of the food item
+     * @param id unique id of the food item
+     */
+
+
+
     // Map of nutrients and value.
     private HashMap<String, Double> nutrients;
     
@@ -23,10 +50,16 @@ public class FoodItem {
      * @param name name of the food item
      * @param id unique id of the food item 
      */
-    public FoodItem(String id, String name) {
+    public FoodItem(String itemName, String brand, String calories, String fat, String carbs, String fiber, String protein) {
         // TODO : Complete
-    	this.id = id;
-    	this.name = name;
+        this.itemName = new String(itemName);
+        this.brand = brand;
+        this.calories = calories;
+        this.fat = fat;
+        this.carbs = carbs;
+        this.fiber = fiber;
+        this.protein = protein;
+        
     }
     
     /**
