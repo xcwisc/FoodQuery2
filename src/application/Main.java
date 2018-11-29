@@ -6,6 +6,7 @@ import javafx.application.Platform; //imported this for the exit button
 import javafx.collections.ObservableList;
 import javafx.geometry.Orientation;
 import javafx.stage.Stage;
+import javafx.scene.text.Font;
 import javafx.scene.Scene;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Line;
