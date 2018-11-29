@@ -2,6 +2,7 @@ package application;
 	
 import javafx.application.Application;
 import javafx.collections.FXCollections;
+import javafx.application.Platform; //imported this for the exit button
 import javafx.collections.ObservableList;
 import javafx.geometry.Orientation;
 import javafx.stage.Stage;
@@ -128,6 +129,8 @@ public class Main extends Application {
 			proteinCounter.getChildren().add(totalProtein);
 			
 			Button saveAndExit = new Button("Save Meal and Exit");
+			saveAndExit.setOnAction(e -> Platform.exit());
+
 		
 			mealInfo.getChildren().addAll(
 					yourMealLabel, clickToRemoveLabel, line,
