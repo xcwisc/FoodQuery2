@@ -24,8 +24,10 @@ public class QueryBarWrapper {
 		numSel.setPromptText("type amount");
 		ComboBox j = new ComboBox(labelz);
 		filterHbox = new HBox();
-		Button selSubbutton = new Button("Submit");
-		filterHbox.getChildren().addAll(selLabel, j, compar, numSel, selSubbutton);
+		Button selSubbutton = new Button("Add Rule");
+		Button viewRules = new Button("View Rules");
+		viewRules.setOnAction(e -> RulesPopUp.display());
+		filterHbox.getChildren().addAll(selLabel, j, compar, numSel, selSubbutton,viewRules);
 	}
 	
 	public HBox getComponent() {
