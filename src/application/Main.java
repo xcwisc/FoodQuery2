@@ -134,7 +134,7 @@ public class Main extends Application {
 		
 			mealInfo.getChildren().addAll(
 					yourMealLabel, clickToRemoveLabel, line,
-					s1, calorieCounter, fatCounter, carbCounter, 
+					list, calorieCounter, fatCounter, carbCounter, 
 					fiberCounter, proteinCounter, saveAndExit);
 
 
