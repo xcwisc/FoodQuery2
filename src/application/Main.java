@@ -36,7 +36,7 @@ public class Main extends Application {
 			BorderPane root = new BorderPane();
 			// initialize all the wrappers
 			ToolBarWrapper toolBarWrapper = new ToolBarWrapper("Meal List", "NTR", 28);
-			CenterVboxWrapper centerVboxWrapper = new CenterVboxWrapper(data, labelz, comparors);
+			CenterVboxWrapper centerVboxWrapper = new CenterVboxWrapper(data, labelz, comparors, primaryStage);
 			MealInfoWrapper mealInfoWrapper = new MealInfoWrapper(items);
 
 
