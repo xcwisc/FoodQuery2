@@ -75,6 +75,7 @@ public class Main extends Application {
 			// as part of their meal and tracks the nutrition numbers (Total number of 
 			// calories in meal, etc.)
 			Label yourMealLabel = new Label("Your Meal"); 
+			yourMealLabel.setFont(new Font("Arial", 16));
 			Label clickToRemoveLabel = new Label("Double click item to remove");
 			VBox mealInfo = new VBox();
 			
@@ -84,13 +85,6 @@ public class Main extends Application {
 				"A", "B", "C", "D");
 			list.setItems(items);
 			
-			// Horizontal line
-			Line line = new Line();
-			line.setStartX(0.0f);
-			line.setStartY(0.0f);
-			line.setEndX(300.0f);
-			line.setEndY(0.0f);
-			line.setStrokeWidth(2);
 			
 			// Allows meal list to be scroll-able
 			ScrollPane s1 = new ScrollPane();
@@ -133,7 +127,7 @@ public class Main extends Application {
 
 		
 			mealInfo.getChildren().addAll(
-					yourMealLabel, clickToRemoveLabel, line,
+					yourMealLabel, clickToRemoveLabel, 
 					list, calorieCounter, fatCounter, carbCounter, 
 					fiberCounter, proteinCounter, saveAndExit);
 
