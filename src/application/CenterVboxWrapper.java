@@ -5,12 +5,14 @@ import java.io.File;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -29,6 +31,8 @@ public class CenterVboxWrapper {
 		Button addFoodItem = new Button("Add Food Item to List");
 		Button loadFoodList = new Button("Load New Food List");
 		Button saveFoodList = new Button("Save Food List to File");
+		
+		addFoodItem.setOnAction(e -> AddItemPopUp.display());
 		
 		saveFoodList.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
@@ -51,32 +55,20 @@ public class CenterVboxWrapper {
 		// Input fields to add new food items to library. User must give a value
 		// for all attributes (name, brand, calories, carbs, etc.) for item to be added.
 		// Can this be simplified?
-		TextField addItemName = new TextField();
-		addItemName.setPromptText("item name");
-		TextField addBrand = new TextField();
-		addBrand.setPromptText("brand");
-		TextField addCalories = new TextField();
-		addCalories.setPromptText("calories");
-		TextField addFat = new TextField();
-		addFat.setPromptText("fat(g)");
-		TextField addCarbs = new TextField();
-		addCarbs.setPromptText("carbs(g)");
-		TextField addFiber = new TextField();
-		addFiber.setPromptText("fiber(g)");
-		TextField addProtein = new TextField();
-		addProtein.setPromptText("protein(g)");
 		
-		// Box to hold all text fields
-		HBox textFields = new HBox();
-		textFields.getChildren().addAll(
-				addItemName, addBrand, addCalories, 
-				addFat, addCarbs, addFiber, addProtein);
+		Label newLabel = new Label("  Available Food Items");
+		Label newerLabel = new Label("   (double click item to add to your meal)");
+				
+		newerLabel.setFont(new Font("NTR", 10));	
+		newLabel.setFont(new Font("NTR", 20));
+		newLabel.setAlignment(Pos.BASELINE_CENTER);
+		
+		HBox newHbox = new HBox(newLabel, newerLabel);
 		
 		foodItemsVbox.getChildren().addAll(
-				new Label("Available Food Items"),
+				newHbox,
 				tabelViewWrapper.getComponent(),
 				queryBarWrapper.getComponent(),
-				textFields,
 				new HBox(addFoodItem, loadFoodList, saveFoodList)	
 				);	
 	}

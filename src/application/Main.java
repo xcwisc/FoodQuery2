@@ -12,16 +12,25 @@ import javafx.scene.layout.*;
 public class Main extends Application {
 	
 	private ObservableList<FoodItem> data =
-	        FXCollections.observableArrayList(
-        		new FoodItem("Ethan", "Williams", "xx", "xx", "xx", "xx", "xx"),
-                new FoodItem("Emma", "Jones", "xx", "xx", "xx", "xx", "xx"),
-                new FoodItem("Michael", "Brown", "xx", "xx", "xx", "xx", "xx"),
-                new FoodItem("Michael", "Brown", "xx", "xx", "xx", "xx", "xx"),
-                new FoodItem("Michael", "Brown", "xx", "xx", "xx", "xx", "xx"),
-                new FoodItem("Michael", "Brown", "xx", "xx", "xx", "xx", "xx"),
-                new FoodItem("Michael", "Brown", "xx", "xx", "xx", "xx", "xx"),
-                new FoodItem("Michael", "Brown", "xx", "xx", "xx", "xx", "xx")
-	        );
+            FXCollections.observableArrayList(
+                new FoodItem("Formula Soy for Diarrhea Ready to Feed", "Similac", "xx", "xx", "xx", "xx", "xx"),
+                new FoodItem("Premium Dark Chocolate with Mint Cookie Crunch", "Stewarts", "xx", "xx", "xx", "xx", "xx"),
+                new FoodItem("Greek Yogurt Lemon", "Yoplait", "xx", "xx", "xx", "xx", "xx"),
+                new FoodItem("Blended Strawberry Lowfat Yogurt", "Essential Everyday", "xx", "xx", "xx", "xx", "xx"),
+                new FoodItem("Soft Cremes Butterscotch Caramel", "Lancaster", "xx", "xx", "xx", "xx", "xx"),
+                new FoodItem("Porridge Heirloom Rye Rosemary Walnut Raisin", "From the Fields", "xx", "xx", "xx", "xx", "xx"),
+                new FoodItem("Shredded Mozzarella Cheese", "Wooden Shoe Cheese Co", "xx", "xx", "xx", "xx", "xx"),
+                new FoodItem("Burrito Bean Cheese", "Don Miguel", "xx", "xx", "xx", "xx", "xx"),
+                new FoodItem("Red Wine Vinegar", "GreatValue", "xx", "xx", "xx", "xx", "xx"),
+                new FoodItem("Sweet Strawberry Smoothie", "Profile", "xx", "xx", "xx", "xx", "xx"),
+                new FoodItem("Fat Free Skim Milk", "Kemps", "xx", "xx", "xx", "xx", "xx"),
+                new FoodItem("Balsamic Vinaigrette", "Meijer", "xx", "xx", "xx", "xx", "xx"),
+                new FoodItem("Benevento Croccantino Allo Strega Chocolatey Covered Hazelnuts", "Giuseppe Alberti Grocery", "xx", "xx", "xx", "xx", "xx"),
+                new FoodItem("Brown Rice 14Oz Pasta", "Tinkyada", "xx", "xx", "xx", "xx", "xx"),
+                new FoodItem("Chicken Sausage Burgers Hot Italian Style", "Al Fresco", "xx", "xx", "xx", "xx", "xx"),
+                new FoodItem("European Baguette", "Ecce Panis", "xx", "xx", "xx", "xx", "xx")
+            );
+
 	private ObservableList<String> labelz = FXCollections.observableArrayList("Calories", "Fat(g)", "Carbs(g)", "Fiber(g)","Protein(g)");
 	
 	private ObservableList<String> comparors = FXCollections.observableArrayList(">","<","=");
@@ -35,7 +44,7 @@ public class Main extends Application {
 		try {
 			BorderPane root = new BorderPane();
 			// initialize all the wrappers
-			ToolBarWrapper toolBarWrapper = new ToolBarWrapper("Meal List", "NTR", 28);
+			ToolBarWrapper toolBarWrapper = new ToolBarWrapper("MealPlan", "NTR", 32);
 			CenterVboxWrapper centerVboxWrapper = new CenterVboxWrapper(data, labelz, comparors, primaryStage);
 			MealInfoWrapper mealInfoWrapper = new MealInfoWrapper(items);
 
@@ -44,7 +53,7 @@ public class Main extends Application {
 			root.setRight(mealInfoWrapper.getComponent());
 			root.setCenter(centerVboxWrapper.getComponent());
 
-			Scene scene = new Scene(root, 950, 580);
+			Scene scene = new Scene(root, 950, 500);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();

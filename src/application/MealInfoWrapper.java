@@ -22,7 +22,7 @@ public class MealInfoWrapper {
 		ListView<String> list = new ListView<String>();
 		
 		list.setItems(data);
-		yourMealLabel.setFont(new Font("Arial", 16));
+		yourMealLabel.setFont(new Font("NTR", 20));
 		
 		HBox calorieCounter = new HBox();
 		HBox fatCounter = new HBox();
