@@ -33,7 +33,7 @@ public class Main extends Application {
 
 	private ObservableList<String> labelz = FXCollections.observableArrayList("Calories", "Fat(g)", "Carbs(g)", "Fiber(g)","Protein(g)");
 	
-	private ObservableList<String> comparors = FXCollections.observableArrayList(">","<","=");
+	private ObservableList<String> comparors = FXCollections.observableArrayList(">","<","=", ">=", "=<");
 	
 	private ObservableList<String> items = FXCollections.observableArrayList(
 			"A", "B", "C", "D");
@@ -53,7 +53,7 @@ public class Main extends Application {
 			root.setRight(mealInfoWrapper.getComponent());
 			root.setCenter(centerVboxWrapper.getComponent());
 
-			Scene scene = new Scene(root, 950, 500);
+			Scene scene = new Scene(root, 1000, 500);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
