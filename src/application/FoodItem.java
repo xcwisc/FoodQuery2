@@ -50,8 +50,9 @@ public class FoodItem {
      * @param name name of the food item
      * @param id unique id of the food item 
      */
-    public FoodItem(String itemName, String brand, String calories, String fat, String carbs, String fiber, String protein) {
+    public FoodItem(String id, String itemName, String brand, String calories, String fat, String carbs, String fiber, String protein) {
         // TODO : Complete
+    	this.id = id;
         this.itemName = new String(itemName);
         this.brand = brand;
         this.calories = calories;
