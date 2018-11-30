@@ -7,6 +7,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 
+/**
+ * Wrapper class for the food rules input field in the main window of
+ * the interface.
+ * @author A-Team 75
+ *
+ */
 public class QueryBarWrapper {
 	
 	private ObservableList<String> comparors;

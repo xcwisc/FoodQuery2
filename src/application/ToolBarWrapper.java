@@ -15,6 +15,12 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * Wrapper class for the toolbar to go across the top of the program. 
+ * Includes the logo of our program as well as buttons to perform actions.
+ * @author A-Team 75
+ *
+ */
 public class ToolBarWrapper {
 	private String labelName;
 	private Label label;

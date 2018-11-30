@@ -1,3 +1,10 @@
+/*
+ * Group Name: A-Team 75
+ * Project: FoodQuery
+ * 
+ * Members: Bennett Majerowski, Micah Jona, Arjun Sachar, Alex Fanner, Chang Xu
+ */
+
 package application;
 	
 import javafx.application.Application;
@@ -8,7 +15,11 @@ import javafx.scene.Scene;
 import javafx.scene.layout.*;
 
 
-
+/**
+ * Main Class is the driver of our MealPlan program.
+ * @author A-Team 75
+ *
+ */
 public class Main extends Application {
 	
 	private ObservableList<FoodItem> data =
@@ -48,7 +59,7 @@ public class Main extends Application {
 			CenterVboxWrapper centerVboxWrapper = new CenterVboxWrapper(data, labelz, comparors, primaryStage);
 			MealInfoWrapper mealInfoWrapper = new MealInfoWrapper(items);
 
-
+			// puts elements to the border panes
 			root.setTop(toolBarWrapper.getComponent());
 			root.setRight(mealInfoWrapper.getComponent());
 			root.setCenter(centerVboxWrapper.getComponent());

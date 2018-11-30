@@ -9,6 +9,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
+/**
+ * Wrapper class for the sidebar that contains information concerning
+ * the meal that the user has chosen
+ * @author A-Team 75
+ *
+ */
 public class MealInfoWrapper {
 	private VBox mealInfo;
 	ObservableList<String> data;

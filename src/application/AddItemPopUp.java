@@ -11,7 +11,12 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.*;
 
-
+/**
+ * Pop up item to input a new food item to the food item table. Within there
+ * are fields for the user to input the food attributes.
+ * @author A-Team 75
+ *
+ */
 public class AddItemPopUp {
    
     

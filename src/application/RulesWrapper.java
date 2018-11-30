@@ -4,6 +4,12 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
+
+/**
+ * Wrapper class for a rule object
+ * @author A-Team 75
+ *
+ */
 public class RulesWrapper {
 	private HBox rule;
 	

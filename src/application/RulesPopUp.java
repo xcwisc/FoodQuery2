@@ -13,6 +13,11 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.*;
 
+/**
+ * Pop up window to view existing food query rules
+ * @author A-Team 75
+ *
+ */
 public class RulesPopUp {
 	public static void display() {
 		Stage popup = new Stage();

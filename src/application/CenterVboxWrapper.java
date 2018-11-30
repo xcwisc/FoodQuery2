@@ -17,6 +17,11 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * Wrapper class for the data contained in center border pane of interface
+ * @author A-Team 75
+ *
+ */
 public class CenterVboxWrapper {
 	
 	private VBox foodItemsVbox;

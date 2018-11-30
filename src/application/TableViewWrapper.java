@@ -6,6 +6,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+/**
+ * Wrapper class for food item table
+ * @author A-Team 75
+ *
+ */
 public class TableViewWrapper {
 	
 	private TableView table;
