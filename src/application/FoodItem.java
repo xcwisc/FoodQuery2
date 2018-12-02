@@ -9,26 +9,16 @@ import java.util.List;
  * @author aka
  */
 public class FoodItem {
-    // The name of the food item.
-    private String name;
 
     // The id of the food item.
     private String id;
-
     // The name of the food item.
     private String itemName;
-
-    // The id of the food item.
     private String brand;
-    
-    private String calories;
-    
+    private String calories; 
     private String fat;
-    
     private String carbs;
-    
     private String fiber;
-    
     private String protein;
 
     
@@ -60,7 +50,12 @@ public class FoodItem {
         this.carbs = carbs;
         this.fiber = fiber;
         this.protein = protein;
-        
+        this.nutrients = new HashMap<String, Double>();
+        this.nutrients.put("calories", Double.parseDouble(this.calories));
+        this.nutrients.put("fat", Double.parseDouble(this.fat));
+        this.nutrients.put("carbs", Double.parseDouble(this.carbs));
+        this.nutrients.put("fiber", Double.parseDouble(this.fiber));
+        this.nutrients.put("protein", Double.parseDouble(this.protein));
     }
     
    
@@ -72,7 +67,7 @@ public class FoodItem {
      * @return name of the food item
      */
     public String getItemName() {
-        return itemName;
+        return this.itemName;
     }
 
     /**
@@ -81,27 +76,27 @@ public class FoodItem {
      * @return id of the food item
      */
     public String getBrand() {
-        return brand;
+        return this.brand;
     }
     
     public String getCalories() {
-    	return calories;
+    	return this.calories;
     }
     
     public String getFat() {
-    	return fat;
+    	return this.fat;
     }
     
     public String getCarbs() {
-    	return carbs;
+    	return this.carbs;
     }
     
     public String getFiber() {
-    	return fiber;
+    	return this.fiber;
     }
     
     public String getProtein() {
-    	return protein;
+    	return this.protein;
     }
     
     /**
@@ -110,8 +105,7 @@ public class FoodItem {
      * @return nutrients of the food item
      */
     public HashMap<String, Double> getNutrients() {
-        // TODO : Complete
-        return null;
+        return this.nutrients;
     }
 
     /**
@@ -119,7 +113,9 @@ public class FoodItem {
      * If nutrient already exists, updates its value.
      */
     public void addNutrient(String name, double value) {
-        // TODO : Complete
+    	this.nutrients.put(name, value);
+    	
+        // TODO : !!!!!!Complete: update the nutrient fields for the observable list to update
     }
 
     /**
@@ -127,8 +123,27 @@ public class FoodItem {
      * If not present, then returns 0.
      */
     public double getNutrientValue(String name) {
-        // TODO : Complete
-        return 0;
+        return this.nutrients.get(name);
+    }
+    
+    /**
+     * get the string to print the foodItem in the format of
+     * <id>,<food_name>,<calories>,<calorie_count>,<fat>,<fat_grams>,<carbohydrate>,<carbohydrate_grams>,<fiber>,<fiber_grams>,<protein>,<protein_grams>
+     * 556540ff5d613c9d5f5935a9,Stewarts_PremiumDarkChocolatewithMintCookieCrunch,calories,280,fat,18,carbohydrate,34,fiber,3,protein,3
+     */
+    public String getString() {
+    	String result = this.id + "," + this.brand + "_" + this.itemName + ",calories," + this.calories
+    			+ ",fat," + this.fat + ",carbohydrate," + this.carbs + ",fiber," + this.fiber + ",protein," + this.protein;
+    	return result;
+    }
+    
+    /**
+     * get fullName of the item for name filtering
+     * @return the fullName containing both the brand and the name
+     */
+    public String getFullName() {
+    	String result = this.brand + "_" + this.itemName;
+    	return result;
     }
     
 }
