@@ -87,6 +87,7 @@ public class FoodData implements FoodDataADT<FoodItem> {
 			
 			
 			br.close();
+			System.out.println(filePath);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(e);

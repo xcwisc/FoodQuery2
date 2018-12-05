@@ -23,7 +23,7 @@ public class TableViewWrapper {
 	private ObservableList<FoodItem> data;
 	
 	@SuppressWarnings("unchecked")
-	public TableViewWrapper(ObservableList<FoodItem> data) {
+	public TableViewWrapper(FoodData foodData, ObservableList<FoodItem> data) {
 		this.data = data;
 		table = new TableView<FoodItem>();
 		                

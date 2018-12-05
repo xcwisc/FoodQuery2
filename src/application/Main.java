@@ -53,10 +53,11 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			FoodData foodData = new FoodData();
 			BorderPane root = new BorderPane();
 			// initialize all the wrappers
-			ToolBarWrapper toolBarWrapper = new ToolBarWrapper("MealPlan", primaryStage);
-			CenterVboxWrapper centerVboxWrapper = new CenterVboxWrapper(data, labelz, comparors, primaryStage);
+			ToolBarWrapper toolBarWrapper = new ToolBarWrapper(foodData, "MealPlan", primaryStage);
+			CenterVboxWrapper centerVboxWrapper = new CenterVboxWrapper(foodData, data, labelz, comparors, primaryStage);
 			MealInfoWrapper mealInfoWrapper = new MealInfoWrapper(items);
 
 			// puts elements to the border panes

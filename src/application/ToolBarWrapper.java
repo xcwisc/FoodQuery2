@@ -12,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -25,7 +26,7 @@ public class ToolBarWrapper {
 	private String labelName;
 	private Label label;
 	private ToolBar toolBar;
-	public ToolBarWrapper(String labelName, Stage primaryStage) {
+	public ToolBarWrapper(FoodData foodData, String labelName, Stage primaryStage) {
 		this.labelName = labelName;
 		label = new Label(this.labelName);
 		label.setId("nav-bar-brand");
@@ -38,6 +39,15 @@ public class ToolBarWrapper {
 		saveFoodList.setId("nav-bar-button");
 		
 		addFoodItem.setOnAction(e -> AddItemPopUp.display());
+		
+		loadFoodList.setOnAction(e -> {
+			FileChooser fileChooser = new FileChooser();
+			configureFileChooser(fileChooser);
+			File file = fileChooser.showOpenDialog(primaryStage);
+			if (file != null) {
+                openFile(foodData, file.toString());
+            }
+		});
 		
 		saveFoodList.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
@@ -59,6 +69,22 @@ public class ToolBarWrapper {
 		
 		
 	}
+	
+	// extension filter
+    private static void configureFileChooser(
+        final FileChooser fileChooser) {      
+    		fileChooser.setTitle("Open a .csv File");
+            fileChooser.setInitialDirectory(
+                new File(System.getProperty("user.home"))
+            );                 
+            fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("CSV", "*.csv")
+            );
+    }
+    
+    private void openFile(FoodData foodData, String path) {
+    	foodData.loadFoodItems(path);
+    }
 	
 	public ToolBar getComponent() {
 		return this.toolBar;

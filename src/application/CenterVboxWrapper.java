@@ -25,11 +25,13 @@ import javafx.stage.Stage;
 public class CenterVboxWrapper {
 	
 	private VBox foodItemsVbox;
+	private FoodData foodData;
 	
-	public CenterVboxWrapper(ObservableList<FoodItem> data, ObservableList<String> labelz, ObservableList<String> comparors, Stage primaryStage) {
+	public CenterVboxWrapper(FoodData foodData, ObservableList<FoodItem> data, ObservableList<String> labelz, ObservableList<String> comparors, Stage primaryStage) {
+		this.foodData = foodData;
 		foodItemsVbox = new VBox();
 		foodItemsVbox.setId("center-vbox");
-		TableViewWrapper tabelViewWrapper = new TableViewWrapper(data);
+		TableViewWrapper tabelViewWrapper = new TableViewWrapper(foodData, data);
 		QueryBarWrapper queryBarWrapper = new QueryBarWrapper(comparors, labelz);
 		
 //		// The following stuff goes along the bottom of the window
