@@ -40,25 +40,7 @@ public class AddItemPopUp {
 		grid.setHgap(10);
 		grid.setVgap(10);
 		grid.setPadding(new Insets(25, 25, 25, 25));
-		     
-		      
-
-		TextField addItemName = new TextField();
-		addItemName.setPromptText("item name");
-
-		TextField addBrand = new TextField();
-		addBrand.setPromptText("brand");
-		TextField addCalories = new TextField();
-		addCalories.setPromptText("calories");
-		TextField addFat = new TextField();
-		addFat.setPromptText("fat(g)");
-		TextField addCarbs = new TextField();
-		addCarbs.setPromptText("carbs(g)");
-		TextField addFiber = new TextField();
-		addFiber.setPromptText("fiber(g)");
-		TextField addProtein = new TextField();
-		addProtein.setPromptText("protein(g)");
-		
+		     		
 		Text scenetitle = new Text("Enter Details:");
 		scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		grid.add(scenetitle, 0, 0, 2, 1);
@@ -105,45 +87,48 @@ public class AddItemPopUp {
 		TextField test9 = new TextField();
 		grid.add(test9, 1, 7);
 		
-		// add elements to the grid
-//		grid.add(addItemName, 1, 1);
-//		grid.add(addCalories, 2, 2);
-//		grid.add(addFat, 3, 3);
-//		grid.add(addCarbs, 4, 4);
-//		grid.add(addFiber, 5, 5);
-//		grid.add(addProtein, 6, 6);
-//		
-//		grid.add(new Label("item name"), 0, 1);
-//		grid.add(new Label("brand"), 0, 2);
-//		grid.add(new Label("calories"), 0, 3);
-//		grid.add(new Label("fat(g)"), 0, 4);
-//		grid.add(new Label("fiber(g)"), 0, 5);
-//		grid.add(new Label("protein(g)"), 0, 6);
 		
 		Button btn = new Button("Submit Item");
+		btn.setOnAction(e -> {
+			//get the info
+			String itemName = userTextField.getText();
+			String brand = pwBox.getText();
+			String calories = test1.getText();
+			String fat = test3.getText();
+			String carbs = test5.getText();
+			String fiber = test7.getText();
+			String protein = test9.getText();
+			
+			//update
+			update(itemName, brand, calories, fat, carbs, fiber, protein);
+		});
 		HBox hbBtn = new HBox(10);
 		hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
 		hbBtn.getChildren().add(btn);
 		grid.add(hbBtn, 1, 9);
 		
 
-		// Box to hold all text fields
-		HBox textFields = new HBox();
-		textFields.getChildren().addAll(
-				addItemName,
-				addBrand,
-				addCalories, 
-				addFat,
-				addCarbs,
-				addFiber,
-				addProtein);
 		      
-		Scene scene1= new Scene(grid, 400, 400);
-		      
-		popupwindow.setScene(scene1);
-		      
+		Scene scene1= new Scene(grid, 400, 400);		      
+		popupwindow.setScene(scene1);		      
 		popupwindow.showAndWait();
 		       
+	}
+	
+	public static void update(String itemName, String brand, String calories, String fat, String carbs, String fiber,
+			String protein) {
+		System.out.println(itemName);
+		System.out.println(brand);
+		System.out.println(calories);
+		System.out.println(fat);
+		System.out.println(carbs);
+		System.out.println(fiber);
+		System.out.println(protein);
+		
+
+
+
+
 	}
 
 }
