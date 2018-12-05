@@ -23,3 +23,5 @@
 #### Arjun Sachar
 - [ ] define the rule
 - [ ] delete the rules (add to the front-end)
+- [ ] put things into meal by double clicking/right clicking specific item
+
