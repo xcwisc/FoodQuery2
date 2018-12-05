@@ -7,7 +7,7 @@
 - Alex Fanner (fanner@wisc.edu, X-team 41)
 
 #### Chang Xu, Micah Jona
-- [ ] connect foodData to the gui
+- [x] connect foodData to the gui
 - [x] tableview display
 - [ ] add new fooditem
 - [ ] meal analysis
