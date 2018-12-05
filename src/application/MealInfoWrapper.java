@@ -26,7 +26,7 @@ public class MealInfoWrapper {
 		Label yourMealLabel = new Label("Your Meal");
 		yourMealLabel.setId("title");
 		
-		Label clickToRemoveLabel = new Label("(Double click item to remove)");
+		Label clickToRemoveLabel = new Label("  (Double click item to remove)");
 		clickToRemoveLabel.setId("note-label");
 		ListView<String> list = new ListView<String>();
 		
