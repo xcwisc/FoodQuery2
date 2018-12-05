@@ -26,7 +26,7 @@ public class ToolBarWrapper {
 	private String labelName;
 	private Label label;
 	private ToolBar toolBar;
-	public ToolBarWrapper(FoodData foodData, String labelName, Stage primaryStage) {
+	public ToolBarWrapper(CenterVboxWrapper centerVboxWrapper, FoodData foodData, String labelName, Stage primaryStage) {
 		this.labelName = labelName;
 		label = new Label(this.labelName);
 		label.setId("nav-bar-brand");
@@ -45,7 +45,7 @@ public class ToolBarWrapper {
 			configureFileChooser(fileChooser);
 			File file = fileChooser.showOpenDialog(primaryStage);
 			if (file != null) {
-                openFile(foodData, file.toString());
+                openFile(foodData, file.toString(), centerVboxWrapper);
             }
 		});
 		
@@ -82,8 +82,10 @@ public class ToolBarWrapper {
             );
     }
     
-    private void openFile(FoodData foodData, String path) {
+    private void openFile(FoodData foodData, String path, CenterVboxWrapper centerVboxWrapper) {
     	foodData.loadFoodItems(path);
+    	TableViewWrapper tableViewWrapper = centerVboxWrapper.getTabelViewWrapper();
+    	tableViewWrapper.update();
     }
 	
 	public ToolBar getComponent() {

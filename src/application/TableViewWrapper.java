@@ -21,10 +21,12 @@ public class TableViewWrapper {
 	private TableView<FoodItem> table;
 	
 	private ObservableList<FoodItem> data;
+	private FoodData foodData;
 	
 	@SuppressWarnings("unchecked")
 	public TableViewWrapper(FoodData foodData, ObservableList<FoodItem> data) {
-		this.data = data;
+		this.foodData = foodData;
+		this.data = foodData.getList();
 		table = new TableView<FoodItem>();
 		                
         TableColumn<FoodItem, String> itemNameCol = new TableColumn<FoodItem, String>("Item Name");
@@ -88,10 +90,15 @@ public class TableViewWrapper {
 	     });
       
         
-        table.setItems(data);
+        table.setItems(this.data);
         table.getColumns().addAll(itemNameCol, brandCol, calCol, fatCol, carbsCol, fiberCol, proteinCol);
         
  
+	}
+	
+	public void update() {
+		this.data = foodData.getList();
+		table.setItems(this.data);
 	}
 	
 	public TableView<FoodItem> getComponent() {

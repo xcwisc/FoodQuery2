@@ -26,12 +26,13 @@ public class CenterVboxWrapper {
 	
 	private VBox foodItemsVbox;
 	private FoodData foodData;
+	TableViewWrapper tabelViewWrapper;
 	
 	public CenterVboxWrapper(FoodData foodData, ObservableList<FoodItem> data, ObservableList<String> labelz, ObservableList<String> comparors, Stage primaryStage) {
 		this.foodData = foodData;
 		foodItemsVbox = new VBox();
 		foodItemsVbox.setId("center-vbox");
-		TableViewWrapper tabelViewWrapper = new TableViewWrapper(foodData, data);
+		this.tabelViewWrapper = new TableViewWrapper(foodData, data);
 		QueryBarWrapper queryBarWrapper = new QueryBarWrapper(comparors, labelz);
 		
 //		// The following stuff goes along the bottom of the window
@@ -85,6 +86,10 @@ public class CenterVboxWrapper {
 	
 	public VBox getComponent() {
 		return this.foodItemsVbox;
+	}
+	
+	public TableViewWrapper getTabelViewWrapper() {
+		return this.tabelViewWrapper;
 	}
 
 }

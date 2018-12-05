@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 /**
  * This class represents the backend for managing all the operations associated
  * with FoodItems
@@ -24,6 +27,8 @@ public class FoodData implements FoodDataADT<FoodItem> {
 
 	// List of all the food items.
 	private List<FoodItem> foodItemList;
+	
+	private ObservableList<FoodItem> observableFoodItemList;
 
 	// Map of nutrients and their corresponding index
 	private HashMap<String, BPTree<Double, FoodItem>> indexes;
@@ -35,6 +40,7 @@ public class FoodData implements FoodDataADT<FoodItem> {
 		// TODO : Complete
 		this.foodItemList = new ArrayList<FoodItem>();
 		this.indexes = new HashMap<String, BPTree<Double, FoodItem>>();
+		this.observableFoodItemList = FXCollections.observableArrayList();
 	}
 
 	/*
@@ -84,6 +90,7 @@ public class FoodData implements FoodDataADT<FoodItem> {
 				BPTreeCalories.insert(item.getNutrientValue("protein"), item);
 			}
 			this.indexes.put("protein", BPTreeProtein);
+			observableFoodItemList = FXCollections.observableArrayList(this.foodItemList);
 			
 			
 			br.close();
@@ -230,6 +237,10 @@ public class FoodData implements FoodDataADT<FoodItem> {
 			System.out.println(e);
 		}
 	}
+	
+	public ObservableList<FoodItem> getList() {
+		return this.observableFoodItemList;
+	};
 
 	// Test
 	public static void main(String[] args) {
