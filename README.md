@@ -7,19 +7,19 @@
 - Alex Fanner (fanner@wisc.edu, X-team 41)
 
 #### Chang Xu, Micah Jona
-[] connect foodData to the gui
-[ ] tableview display
-[ ] put things into the meal
-[ ] add new fooditem
-[ ] meal analysis
-[ ] delete all the hard coded stuff
+- [ ] connect foodData to the gui
+- [ ] tableview display
+- [ ] put things into the meal
+- [ ] add new fooditem
+- [ ] meal analysis
+- [ ] delete all the hard coded stuff
 
 #### Bennett Majerowski, Alex Fanner
-[ ] make file
-[ ] make executable.jar 
-[ ] BPtree
-[ ] test BPtree
+- [ ] make file
+- [ ] make executable.jar 
+- [ ] BPtree
+- [ ] test BPtree
 
 #### Arjun Sachar
-[ ] define the rule
-[ ] delete the rules (add to the front-end)
+- [ ] define the rule
+- [ ] delete the rules (add to the front-end)
