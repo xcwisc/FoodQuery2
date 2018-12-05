@@ -15,8 +15,8 @@
 - [ ] delete all the hard coded stuff
 
 #### Bennett Majerowski, Alex Fanner
-- [ ] make file
-- [ ] make executable.jar 
+- [X] make file
+- [X] make executable.jar 
 - [ ] BPtree
 - [ ] test BPtree
 
