@@ -1,10 +1,15 @@
 package application;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 
 /**
  * Wrapper class for food item table
@@ -13,49 +18,74 @@ import javafx.scene.control.cell.PropertyValueFactory;
  */
 public class TableViewWrapper {
 	
-	private TableView table;
+	private TableView<FoodItem> table;
 	
 	private ObservableList<FoodItem> data;
 	
+	@SuppressWarnings("unchecked")
 	public TableViewWrapper(ObservableList<FoodItem> data) {
 		this.data = data;
-		table = new TableView();
+		table = new TableView<FoodItem>();
 		                
-        TableColumn itemNameCol = new TableColumn("Item Name");
+        TableColumn<FoodItem, String> itemNameCol = new TableColumn<FoodItem, String>("Item Name");
         itemNameCol.setMinWidth(100);
         itemNameCol.setCellValueFactory(
                 new PropertyValueFactory<FoodItem, String>("itemName"));
  
-        TableColumn brandCol = new TableColumn("Brand");
+        TableColumn<FoodItem, String> brandCol = new TableColumn<FoodItem, String>("Brand");
         brandCol.setMinWidth(100);
         brandCol.setCellValueFactory(
                 new PropertyValueFactory<FoodItem, String>("brand"));
         
-        TableColumn calCol = new TableColumn("Calories");
-	    calCol.setMinWidth(100);
-	    calCol.setCellValueFactory(
-	            new PropertyValueFactory<FoodItem, String>("calories"));
+        TableColumn<FoodItem, Double> calCol = new TableColumn<FoodItem, Double>("Calories");
+	    calCol.setMinWidth(100);	    
+	    calCol.setCellValueFactory(new Callback<CellDataFeatures<FoodItem, Double>, ObservableValue<Double>>() {
+	        public ObservableValue<Double> call(CellDataFeatures<FoodItem, Double> p) {
+	        	Double raw = p.getValue().getNutrientValue("calories");
+	        	ObservableValue<Double> result =  new SimpleDoubleProperty(raw).asObject();
+	        	return result;
+	        }
+	     });
 	     
-	    TableColumn fatCol = new TableColumn("Fat(g)");
-	    fatCol.setMinWidth(100);
-	    fatCol.setCellValueFactory(
-	            new PropertyValueFactory<FoodItem, String>("fat"));
+	    TableColumn<FoodItem, Double> fatCol = new TableColumn<FoodItem, Double>("Fat(g)");
+	    fatCol.setMinWidth(100);	    
+	    fatCol.setCellValueFactory(new Callback<CellDataFeatures<FoodItem, Double>, ObservableValue<Double>>() {
+	        public ObservableValue<Double> call(CellDataFeatures<FoodItem, Double> p) {
+	        	Double raw = p.getValue().getNutrientValue("fat");
+	        	ObservableValue<Double> result =  new SimpleDoubleProperty(raw).asObject();
+	        	return result;
+	        }
+	     });
 	     
-	    TableColumn carbsCol = new TableColumn("Carbs(g)");
-	    carbsCol.setMinWidth(100);
-	    carbsCol.setCellValueFactory(
-	            new PropertyValueFactory<FoodItem, String>("carbs"));
+	    TableColumn<FoodItem, Double> carbsCol = new TableColumn<FoodItem, Double>("Carbs(g)");
+	    carbsCol.setMinWidth(100);	    
+	    carbsCol.setCellValueFactory(new Callback<CellDataFeatures<FoodItem, Double>, ObservableValue<Double>>() {
+	        public ObservableValue<Double> call(CellDataFeatures<FoodItem, Double> p) {
+	        	Double raw = p.getValue().getNutrientValue("carbs");
+	        	ObservableValue<Double> result =  new SimpleDoubleProperty(raw).asObject();
+	        	return result;
+	        }
+	     });
 	      
-	    TableColumn fiberCol = new TableColumn("Fiber(g)");
-	    fiberCol.setMinWidth(100);
-	    fiberCol.setCellValueFactory(
-	            new PropertyValueFactory<FoodItem, String>("fiber"));
+	    TableColumn<FoodItem, Double> fiberCol = new TableColumn<FoodItem, Double>("Fiber(g)");
+	    fiberCol.setMinWidth(100);	    
+	    fiberCol.setCellValueFactory(new Callback<CellDataFeatures<FoodItem, Double>, ObservableValue<Double>>() {
+	        public ObservableValue<Double> call(CellDataFeatures<FoodItem, Double> p) {
+	        	Double raw = p.getValue().getNutrientValue("fiber");
+	        	ObservableValue<Double> result =  new SimpleDoubleProperty(raw).asObject();
+	        	return result;
+	        }
+	     });
 	      
-	    TableColumn proteinCol = new TableColumn("Protein(g)");
-	    proteinCol.setMinWidth(100);
-	    proteinCol.setCellValueFactory(
-	            new PropertyValueFactory<FoodItem, String>("protein"));
-      
+	    TableColumn<FoodItem, Double> proteinCol = new TableColumn<FoodItem, Double>("Protein(g)");
+	    proteinCol.setMinWidth(100);	    
+	    proteinCol.setCellValueFactory(new Callback<CellDataFeatures<FoodItem, Double>, ObservableValue<Double>>() {
+	        public ObservableValue<Double> call(CellDataFeatures<FoodItem, Double> p) {
+	        	Double raw = p.getValue().getNutrientValue("protein");
+	        	ObservableValue<Double> result =  new SimpleDoubleProperty(raw).asObject();
+	        	return result;
+	        }
+	     });
       
         
         table.setItems(data);
@@ -64,7 +94,7 @@ public class TableViewWrapper {
  
 	}
 	
-	public TableView getComponent() {
+	public TableView<FoodItem> getComponent() {
 		return this.table;
 	}
 }

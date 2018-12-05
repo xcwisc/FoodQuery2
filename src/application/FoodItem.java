@@ -16,13 +16,6 @@ public class FoodItem {
 	// The name of the food item.
 	private String itemName;
 	private String brand;
-	private String calories;
-	private String fat;
-	private String carbs;
-	private String fiber;
-	private String protein;
-
-	// String calories, String fat, String carbs, String fiber, String protein
 
 	/**
 	 * Constructor
@@ -46,21 +39,15 @@ public class FoodItem {
 	 */
 	public FoodItem(String id, String itemName, String brand, String calories, String fat, String carbs, String fiber,
 			String protein) {
-		// TODO : Complete
 		this.id = id;
 		this.itemName = new String(itemName);
 		this.brand = brand;
-		this.calories = calories;
-		this.fat = fat;
-		this.carbs = carbs;
-		this.fiber = fiber;
-		this.protein = protein;
 		this.nutrients = new HashMap<String, Double>();
-		this.nutrients.put("calories", Double.parseDouble(this.calories));
-		this.nutrients.put("fat", Double.parseDouble(this.fat));
-		this.nutrients.put("carbs", Double.parseDouble(this.carbs));
-		this.nutrients.put("fiber", Double.parseDouble(this.fiber));
-		this.nutrients.put("protein", Double.parseDouble(this.protein));
+		this.nutrients.put("calories", Double.parseDouble(calories));
+		this.nutrients.put("fat", Double.parseDouble(fat));
+		this.nutrients.put("carbs", Double.parseDouble(carbs));
+		this.nutrients.put("fiber", Double.parseDouble(fiber));
+		this.nutrients.put("protein", Double.parseDouble(protein));
 	}
 
 	/**
@@ -81,25 +68,6 @@ public class FoodItem {
 		return this.brand;
 	}
 
-	public String getCalories() {
-		return this.calories;
-	}
-
-	public String getFat() {
-		return this.fat;
-	}
-
-	public String getCarbs() {
-		return this.carbs;
-	}
-
-	public String getFiber() {
-		return this.fiber;
-	}
-
-	public String getProtein() {
-		return this.protein;
-	}
 
 	/**
 	 * Gets the nutrients of the food item
@@ -134,8 +102,9 @@ public class FoodItem {
 	 * 556540ff5d613c9d5f5935a9,Stewarts_PremiumDarkChocolatewithMintCookieCrunch,calories,280,fat,18,carbohydrate,34,fiber,3,protein,3
 	 */
 	public String getString() {
-		String result = this.id + "," + this.brand + "_" + this.itemName + ",calories," + this.calories + ",fat,"
-				+ this.fat + ",carbohydrate," + this.carbs + ",fiber," + this.fiber + ",protein," + this.protein;
+		String result = this.id + "," + this.brand + "_" + this.itemName + ",calories," + this.getNutrientValue("calories") + ",fat,"
+				+ this.getNutrientValue("fat") + ",carbohydrate," + this.getNutrientValue("carbs") + ",fiber," + this.getNutrientValue("fiber")
+				+ ",protein," + this.getNutrientValue("protein");
 		return result;
 	}
 

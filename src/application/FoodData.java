@@ -221,6 +221,7 @@ public class FoodData implements FoodDataADT<FoodItem> {
 			});
 			for (String str : foodDataString) {
 				writer.write(str);
+				writer.write(System.getProperty("line.separator"));
 			}
 			writer.close();
 		} catch (Exception e) {
@@ -232,8 +233,8 @@ public class FoodData implements FoodDataADT<FoodItem> {
 	// Test
 	public static void main(String[] args) {
 		FoodData foodData = new FoodData();
-		foodData.loadFoodItems("/u/j/o/jona/Desktop/foodItems.csv");
-		foodData.saveFoodItems("/u/j/o/jona/Desktop/test.txt");
+		foodData.loadFoodItems("/u/c/h/changx/Desktop/foodItems.csv");
+		foodData.saveFoodItems("/u/c/h/changx/Desktop/test.txt");
 		List<FoodItem> filtered = foodData.filterByName("Sour");
 		for (FoodItem item : filtered) {
 			System.out.println(item.getString());
