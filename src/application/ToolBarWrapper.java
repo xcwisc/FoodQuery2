@@ -26,7 +26,7 @@ public class ToolBarWrapper {
 	private String labelName;
 	private Label label;
 	private ToolBar toolBar;
-	public ToolBarWrapper(CenterVboxWrapper centerVboxWrapper, FoodData foodData, String labelName, Stage primaryStage) {
+	public ToolBarWrapper(CenterVboxWrapper centerVboxWrapper, FoodDataADT<FoodItem> foodData, String labelName, Stage primaryStage) {
 		this.labelName = labelName;
 		label = new Label(this.labelName);
 		label.setId("nav-bar-brand");
@@ -38,7 +38,8 @@ public class ToolBarWrapper {
 		Button saveFoodList = new Button("Save Food List");
 		saveFoodList.setId("nav-bar-button");
 		
-		addFoodItem.setOnAction(e -> AddItemPopUp.display());
+		AddItemPopUp addItemPopUp = new AddItemPopUp(centerVboxWrapper, foodData);
+		addFoodItem.setOnAction(e -> addItemPopUp.display());
 		
 		loadFoodList.setOnAction(e -> {
 			FileChooser fileChooser = new FileChooser();
@@ -82,7 +83,7 @@ public class ToolBarWrapper {
             );
     }
     
-    private void openFile(FoodData foodData, String path, CenterVboxWrapper centerVboxWrapper) {
+    private void openFile(FoodDataADT<FoodItem> foodData, String path, CenterVboxWrapper centerVboxWrapper) {
     	foodData.loadFoodItems(path);
     	TableViewWrapper tableViewWrapper = centerVboxWrapper.getTabelViewWrapper();
     	tableViewWrapper.update();

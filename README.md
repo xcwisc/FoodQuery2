@@ -9,7 +9,7 @@
 #### Chang Xu, Micah Jona
 - [x] connect foodData to the gui
 - [x] tableview display
-- [ ] add new fooditem
+- [x] add new fooditem
 - [ ] meal analysis
 - [ ] delete all the hard coded stuff
 

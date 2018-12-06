@@ -25,10 +25,10 @@ import javafx.stage.Stage;
 public class CenterVboxWrapper {
 	
 	private VBox foodItemsVbox;
-	private FoodData foodData;
+	private FoodDataADT<FoodItem> foodData;
 	TableViewWrapper tabelViewWrapper;
 	
-	public CenterVboxWrapper(FoodData foodData, ObservableList<FoodItem> data, ObservableList<String> labelz, ObservableList<String> comparors, Stage primaryStage) {
+	public CenterVboxWrapper(FoodDataADT<FoodItem> foodData, ObservableList<FoodItem> data, ObservableList<String> labelz, ObservableList<String> comparors, Stage primaryStage) {
 		this.foodData = foodData;
 		foodItemsVbox = new VBox();
 		foodItemsVbox.setId("center-vbox");

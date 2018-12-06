@@ -53,7 +53,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			FoodData foodData = new FoodData();
+			FoodDataADT<FoodItem> foodData = new FoodData();
 			BorderPane root = new BorderPane();
 			// initialize all the wrappers
 			CenterVboxWrapper centerVboxWrapper = new CenterVboxWrapper(foodData, data, labelz, comparors, primaryStage);

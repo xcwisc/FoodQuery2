@@ -28,8 +28,6 @@ public class FoodData implements FoodDataADT<FoodItem> {
 	// List of all the food items.
 	private List<FoodItem> foodItemList;
 	
-	private ObservableList<FoodItem> observableFoodItemList;
-
 	// Map of nutrients and their corresponding index
 	private HashMap<String, BPTree<Double, FoodItem>> indexes;
 
@@ -40,7 +38,16 @@ public class FoodData implements FoodDataADT<FoodItem> {
 		// TODO : Complete
 		this.foodItemList = new ArrayList<FoodItem>();
 		this.indexes = new HashMap<String, BPTree<Double, FoodItem>>();
-		this.observableFoodItemList = FXCollections.observableArrayList();
+		BPTree<Double, FoodItem> BPTreeCalories = new BPTree<Double, FoodItem>(3);
+		this.indexes.put("calories", BPTreeCalories);
+		BPTree<Double, FoodItem> BPTreeFat = new BPTree<Double, FoodItem>(3);
+		this.indexes.put("fat", BPTreeFat);
+		BPTree<Double, FoodItem> BPTreeCarbs = new BPTree<Double, FoodItem>(3);
+		this.indexes.put("carbs", BPTreeCarbs);
+		BPTree<Double, FoodItem> BPTreeFiber = new BPTree<Double, FoodItem>(3);
+		this.indexes.put("fiber", BPTreeFiber);
+		BPTree<Double, FoodItem> BPTreeProtein = new BPTree<Double, FoodItem>(3);
+		this.indexes.put("protein", BPTreeProtein);
 	}
 
 	/*
@@ -61,37 +68,30 @@ public class FoodData implements FoodDataADT<FoodItem> {
 			this.foodItemList = br.lines().filter(data -> data.length() > 11).map(rule -> parser(rule))
 					.collect(Collectors.toList());
 
-			BPTree<Double, FoodItem> BPTreeCalories = new BPTree<Double, FoodItem>(3);
+			BPTree<Double, FoodItem> BPTreeCalories = this.indexes.get("calories");
 			for (FoodItem item : this.foodItemList) {
 				BPTreeCalories.insert(item.getNutrientValue("calories"), item);
 			}
-			this.indexes.put("calories", BPTreeCalories);
 			
-			BPTree<Double, FoodItem> BPTreeFat = new BPTree<Double, FoodItem>(3);
+			BPTree<Double, FoodItem> BPTreeFat = this.indexes.get("fat");
 			for (FoodItem item : this.foodItemList) {
 				BPTreeFat.insert(item.getNutrientValue("fat"), item);
 			}
-			this.indexes.put("fat", BPTreeFat);
 			
-			BPTree<Double, FoodItem> BPTreeCarbs = new BPTree<Double, FoodItem>(3);
+			BPTree<Double, FoodItem> BPTreeCarbs = this.indexes.get("carbs");
 			for (FoodItem item : this.foodItemList) {
 				BPTreeCarbs.insert(item.getNutrientValue("carbs"), item);
 			}
-			this.indexes.put("carbs", BPTreeCarbs);
 			
-			BPTree<Double, FoodItem> BPTreeFiber = new BPTree<Double, FoodItem>(3);
+			BPTree<Double, FoodItem> BPTreeFiber = this.indexes.get("fiber");
 			for (FoodItem item : this.foodItemList) {
 				BPTreeCalories.insert(item.getNutrientValue("fiber"), item);
 			}
-			this.indexes.put("fiber", BPTreeFiber);
 			
-			BPTree<Double, FoodItem> BPTreeProtein = new BPTree<Double, FoodItem>(3);
+			BPTree<Double, FoodItem> BPTreeProtein = this.indexes.get("protein");
 			for (FoodItem item : this.foodItemList) {
 				BPTreeCalories.insert(item.getNutrientValue("protein"), item);
-			}
-			this.indexes.put("protein", BPTreeProtein);
-			observableFoodItemList = FXCollections.observableArrayList(this.foodItemList);
-			
+			}	
 			
 			br.close();
 			System.out.println(filePath);
@@ -201,7 +201,14 @@ public class FoodData implements FoodDataADT<FoodItem> {
 	 */
 	@Override
 	public void addFoodItem(FoodItem foodItem) {
+		// add the foodItem to the foodItemList
 		this.foodItemList.add(foodItem);
+		// add the foodItem to 5 BPtrees
+		this.indexes.get("calories").insert(foodItem.getNutrientValue("calories"), foodItem);
+		this.indexes.get("fat").insert(foodItem.getNutrientValue("fat"), foodItem);
+		this.indexes.get("carbs").insert(foodItem.getNutrientValue("carbs"), foodItem);
+		this.indexes.get("fiber").insert(foodItem.getNutrientValue("fiber"), foodItem);
+		this.indexes.get("protein").insert(foodItem.getNutrientValue("protein"), foodItem);
 	}
 
 	/*
@@ -238,18 +245,15 @@ public class FoodData implements FoodDataADT<FoodItem> {
 		}
 	}
 	
-	public ObservableList<FoodItem> getList() {
-		return this.observableFoodItemList;
-	};
 
-	// Test
-	public static void main(String[] args) {
-		FoodData foodData = new FoodData();
-		foodData.loadFoodItems("/u/c/h/changx/Desktop/foodItems.csv");
-		foodData.saveFoodItems("/u/c/h/changx/Desktop/test.txt");
-		List<FoodItem> filtered = foodData.filterByName("Sour");
-		for (FoodItem item : filtered) {
-			System.out.println(item.getString());
-		}
-	}
+//	// Test
+//	public static void main(String[] args) {
+//		FoodData foodData = new FoodData();
+//		foodData.loadFoodItems("/u/c/h/changx/Desktop/foodItems.csv");
+//		foodData.saveFoodItems("/u/c/h/changx/Desktop/test.txt");
+//		List<FoodItem> filtered = foodData.filterByName("Sour");
+//		for (FoodItem item : filtered) {
+//			System.out.println(item.getString());
+//		}
+//	}
 }

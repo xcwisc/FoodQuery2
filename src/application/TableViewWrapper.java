@@ -21,12 +21,12 @@ public class TableViewWrapper {
 	private TableView<FoodItem> table;
 	
 	private ObservableList<FoodItem> data;
-	private FoodData foodData;
+	private FoodDataADT<FoodItem> foodData;
 	
 	@SuppressWarnings("unchecked")
-	public TableViewWrapper(FoodData foodData, ObservableList<FoodItem> data) {
+	public TableViewWrapper(FoodDataADT<FoodItem> foodData, ObservableList<FoodItem> data) {
 		this.foodData = foodData;
-		this.data = foodData.getList();
+		this.data = FXCollections.observableArrayList(foodData.getAllFoodItems());
 		table = new TableView<FoodItem>();
 		                
         TableColumn<FoodItem, String> itemNameCol = new TableColumn<FoodItem, String>("Item Name");
@@ -97,7 +97,7 @@ public class TableViewWrapper {
 	}
 	
 	public void update() {
-		this.data = foodData.getList();
+		this.data = FXCollections.observableArrayList(foodData.getAllFoodItems());
 		table.setItems(this.data);
 	}
 	
