@@ -10,8 +10,8 @@
 - [x] connect foodData to the gui
 - [x] tableview display
 - [x] add new fooditem
-- [ ] meal analysis
-- [ ] delete all the hard coded stuff
+- [X] meal analysis
+- [X] delete all the hard coded stuff
 - [X] put things into meal by double clicking/right clicking specific item
 
 #### Bennett Majerowski, Alex Fanner
