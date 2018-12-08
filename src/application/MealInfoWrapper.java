@@ -1,11 +1,22 @@
 package application;
 
+import com.sun.javafx.scene.control.skin.LabeledText;
+import com.sun.javafx.scene.control.skin.ListViewSkin;
+
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableRow;
+import javafx.scene.input.MouseButton;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
@@ -18,20 +29,27 @@ import javafx.scene.text.Font;
 public class MealInfoWrapper {
 	private VBox mealInfo;
 	ObservableList<String> data;
+	ListView<String> list;
 	
-	public MealInfoWrapper(ObservableList<String> data) {
+	public MealInfoWrapper() {
 		mealInfo = new VBox();
 		mealInfo.setId("meal-info");
-		this.data = data;
+		this.data = FXCollections.observableArrayList();
 		Label yourMealLabel = new Label("Your Meal");
 		yourMealLabel.setId("title");
 		
 		Label clickToRemoveLabel = new Label("  (Double click item to remove)");
 		clickToRemoveLabel.setId("note-label");
-		ListView<String> list = new ListView<String>();
+		list = new ListView<String>();
 		
 		list.setItems(data);
-		yourMealLabel.setFont(new Font("NTR", 20));
+		list.setOnMouseClicked(event -> {
+			if(event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2 && !data.isEmpty()) {
+				int index = list.getSelectionModel().getSelectedIndex();
+//				System.out.println(index);
+				data.remove(index);
+			} 
+		});
 		
 		HBox calorieCounter = new HBox();
 		HBox fatCounter = new HBox();
@@ -63,4 +81,10 @@ public class MealInfoWrapper {
 	public VBox getComponent() {
 		return this.mealInfo;
 	}
+	
+	public void add(FoodItem foodItem) {
+		this.data.add(foodItem.getItemName());
+	}
+	
+	
 }

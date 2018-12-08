@@ -46,8 +46,6 @@ public class Main extends Application {
 	
 	private ObservableList<String> comparors = FXCollections.observableArrayList(">","<","=", ">=", "=<");
 	
-	private ObservableList<String> items = FXCollections.observableArrayList(
-			"A", "B", "C", "D");
 		
 		
 	@Override
@@ -56,9 +54,10 @@ public class Main extends Application {
 			FoodDataADT<FoodItem> foodData = new FoodData();
 			BorderPane root = new BorderPane();
 			// initialize all the wrappers
-			CenterVboxWrapper centerVboxWrapper = new CenterVboxWrapper(foodData, data, labelz, comparors, primaryStage);
+			MealInfoWrapper mealInfoWrapper = new MealInfoWrapper();
+			CenterVboxWrapper centerVboxWrapper = new CenterVboxWrapper(foodData, data, labelz, comparors, primaryStage, mealInfoWrapper);
 			ToolBarWrapper toolBarWrapper = new ToolBarWrapper(centerVboxWrapper, foodData, "MealPlan", primaryStage);
-			MealInfoWrapper mealInfoWrapper = new MealInfoWrapper(items);
+			
 
 			// puts elements to the border panes
 			root.setTop(toolBarWrapper.getComponent());

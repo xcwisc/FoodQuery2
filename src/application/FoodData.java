@@ -65,8 +65,8 @@ public class FoodData implements FoodDataADT<FoodItem> {
 
 			BufferedReader br = new BufferedReader(new InputStreamReader(inputFS));
 			// the filter method may need improvement
-			this.foodItemList = br.lines().filter(data -> data.length() > 11).map(rule -> parser(rule))
-					.collect(Collectors.toList());
+			br.lines().filter(data -> data.length() > 11).map(rule -> parser(rule))
+					.forEach(food -> this.foodItemList.add(food));
 
 			BPTree<Double, FoodItem> BPTreeCalories = this.indexes.get("calories");
 			for (FoodItem item : this.foodItemList) {

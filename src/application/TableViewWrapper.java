@@ -5,8 +5,10 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
@@ -24,7 +26,7 @@ public class TableViewWrapper {
 	private FoodDataADT<FoodItem> foodData;
 	
 	@SuppressWarnings("unchecked")
-	public TableViewWrapper(FoodDataADT<FoodItem> foodData, ObservableList<FoodItem> data) {
+	public TableViewWrapper(FoodDataADT<FoodItem> foodData, ObservableList<FoodItem> data, MealInfoWrapper mealInfoWrapper) {
 		this.foodData = foodData;
 		this.data = FXCollections.observableArrayList(foodData.getAllFoodItems());
 		table = new TableView<FoodItem>();
@@ -92,8 +94,23 @@ public class TableViewWrapper {
         
         table.setItems(this.data);
         table.getColumns().addAll(itemNameCol, brandCol, calCol, fatCol, carbsCol, fiberCol, proteinCol);
-        
- 
+        table.setOnMousePressed(event -> {
+            if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
+                Node node = ((Node) event.getTarget()).getParent();
+                TableRow row;
+                if (node instanceof TableRow) {
+                    row = (TableRow) node;
+                } else {
+                    // clicking on text part
+                    row = (TableRow) node.getParent();
+                }
+                FoodItem food = (FoodItem) row.getItem();
+//                System.out.println(food.getItemName());
+                mealInfoWrapper.add(food);
+                
+            }
+        });
+
 	}
 	
 	public void update() {
