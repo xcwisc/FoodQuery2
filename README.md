@@ -6,7 +6,7 @@
 - Bennett Majerowski (majerowski@wisc.edu, X-team 41)
 - Alex Fanner (fanner@wisc.edu, X-team 41)
 
-#### Chang Xu, Micah Jona
+#### Chang Xu
 - [x] connect foodData to the gui
 - [x] tableview display
 - [x] add new fooditem
@@ -19,10 +19,14 @@
 - [X] make executable.jar 
 - [X] BPtree insert
 - [ ] BPtree rangeSearch
-- [ ] test BPtree
+- [X] test BPtree
 
 #### Arjun Sachar
 - [ ] define the rule
 - [ ] delete the rules (add to the front-end)
+
+#### Micah Jona
+- [X] save food list
+
 
 
