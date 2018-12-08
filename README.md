@@ -12,7 +12,7 @@
 - [x] add new fooditem
 - [ ] meal analysis
 - [ ] delete all the hard coded stuff
-- [ ] put things into meal by double clicking/right clicking specific item
+- [X] put things into meal by double clicking/right clicking specific item
 
 #### Bennett Majerowski, Alex Fanner
 - [X] make file
