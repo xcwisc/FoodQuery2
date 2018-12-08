@@ -12,15 +12,17 @@
 - [x] add new fooditem
 - [ ] meal analysis
 - [ ] delete all the hard coded stuff
+- [ ] put things into meal by double clicking/right clicking specific item
 
 #### Bennett Majerowski, Alex Fanner
 - [X] make file
 - [X] make executable.jar 
-- [ ] BPtree
+- [X] BPtree insert
+- [ ] BPtree rangeSearch
 - [ ] test BPtree
 
 #### Arjun Sachar
 - [ ] define the rule
 - [ ] delete the rules (add to the front-end)
-- [ ] put things into meal by double clicking/right clicking specific item
+
 
