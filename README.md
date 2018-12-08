@@ -16,7 +16,7 @@
 #### Bennett Majerowski, Alex Fanner
 - [X] make file
 - [X] make executable.jar 
-- [ ] BPtree
+- [/] BPtree
 - [ ] test BPtree
 
 #### Arjun Sachar
