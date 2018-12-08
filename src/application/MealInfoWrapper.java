@@ -67,7 +67,7 @@ public class MealInfoWrapper {
 		proteinCounter.getChildren().add(new Label("Total Protein(g): "));
 		proteinCounter.getChildren().add(new Label("xx"));
 		
-		Button saveAndExit = new Button("Save Meal and Exit");
+		Button saveAndExit = new Button("Exit");
 		saveAndExit.setOnAction(e -> Platform.exit());
 
 		

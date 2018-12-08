@@ -22,26 +22,6 @@ import javafx.scene.layout.*;
  */
 public class Main extends Application {
 	
-	private ObservableList<FoodItem> data =
-            FXCollections.observableArrayList(
-                new FoodItem("556540ff5d613c9d5f5935a9", "Formula Soy for Diarrhea Ready to Feed", "Similac", "1", "1", "1", "1", "1"),
-                new FoodItem("556540ff5d613c9d5f5935a9", "Premium Dark Chocolate with Mint Cookie Crunch", "Stewarts", "1", "1", "1", "1", "1"),
-                new FoodItem("556540ff5d613c9d5f5935a9", "Greek Yogurt Lemon", "Yoplait", "1", "1", "1", "1", "1"),
-                new FoodItem("556540ff5d613c9d5f5935a9", "Blended Strawberry Lowfat Yogurt", "Essential Everyday", "1", "1", "1", "1", "1"),
-                new FoodItem("556540ff5d613c9d5f5935a9", "Soft Cremes Butterscotch Caramel", "Lancaster", "1", "1", "1", "1", "1"),
-                new FoodItem("556540ff5d613c9d5f5935a9", "Porridge Heirloom Rye Rosemary Walnut Raisin", "From the Fields", "1", "1", "1", "1", "1"),
-                new FoodItem("556540ff5d613c9d5f5935a9", "Shredded Mozzarella Cheese", "Wooden Shoe Cheese Co", "1", "1", "1", "1", "1"),
-                new FoodItem("556540ff5d613c9d5f5935a9", "Burrito Bean Cheese", "Don Miguel", "1", "1", "1", "1", "1"),
-                new FoodItem("556540ff5d613c9d5f5935a9", "Red Wine Vinegar", "GreatValue", "1", "1", "1", "1", "1"),
-                new FoodItem("556540ff5d613c9d5f5935a9", "Sweet Strawberry Smoothie", "Profile", "1", "1", "1", "1", "1"),
-                new FoodItem("556540ff5d613c9d5f5935a9", "Fat Free Skim Milk", "Kemps", "1", "1", "1", "1", "1"),
-                new FoodItem("556540ff5d613c9d5f5935a9", "Balsamic Vinaigrette", "Meijer", "1", "1", "1", "1", "1"),
-                new FoodItem("556540ff5d613c9d5f5935a9", "Benevento Croccantino Allo Strega Chocolatey Covered Hazelnuts", "Giuseppe Alberti Grocery", "1", "1", "1", "1", "1"),
-                new FoodItem("556540ff5d613c9d5f5935a9", "Brown Rice 14Oz Pasta", "Tinkyada", "1", "1", "1", "1", "1"),
-                new FoodItem("556540ff5d613c9d5f5935a9", "Chicken Sausage Burgers Hot Italian Style", "Al Fresco", "1", "1", "1", "1", "1"),
-                new FoodItem("556540ff5d613c9d5f5935a9", "European Baguette", "Ecce Panis", "1", "1", "1", "1", "1")
-            );
-
 	private ObservableList<String> labelz = FXCollections.observableArrayList("Calories", "Fat(g)", "Carbs(g)", "Fiber(g)","Protein(g)");
 	
 	private ObservableList<String> comparors = FXCollections.observableArrayList(">","<","=", ">=", "=<");
@@ -55,7 +35,7 @@ public class Main extends Application {
 			BorderPane root = new BorderPane();
 			// initialize all the wrappers
 			MealInfoWrapper mealInfoWrapper = new MealInfoWrapper();
-			CenterVboxWrapper centerVboxWrapper = new CenterVboxWrapper(foodData, data, labelz, comparors, primaryStage, mealInfoWrapper);
+			CenterVboxWrapper centerVboxWrapper = new CenterVboxWrapper(foodData, labelz, comparors, primaryStage, mealInfoWrapper);
 			ToolBarWrapper toolBarWrapper = new ToolBarWrapper(centerVboxWrapper, foodData, "MealPlan", primaryStage);
 			
 

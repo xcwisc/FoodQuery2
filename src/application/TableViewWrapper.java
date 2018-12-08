@@ -26,7 +26,7 @@ public class TableViewWrapper {
 	private FoodDataADT<FoodItem> foodData;
 	
 	@SuppressWarnings("unchecked")
-	public TableViewWrapper(FoodDataADT<FoodItem> foodData, ObservableList<FoodItem> data, MealInfoWrapper mealInfoWrapper) {
+	public TableViewWrapper(FoodDataADT<FoodItem> foodData, MealInfoWrapper mealInfoWrapper) {
 		this.foodData = foodData;
 		this.data = FXCollections.observableArrayList(foodData.getAllFoodItems());
 		table = new TableView<FoodItem>();
