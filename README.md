@@ -18,7 +18,7 @@
 - [X] make file
 - [X] make executable.jar 
 - [X] BPtree insert
-- [ ] BPtree rangeSearch
+- [X] BPtree rangeSearch
 - [X] test BPtree
 
 #### Arjun Sachar
