@@ -61,7 +61,11 @@ public class QueryBarWrapper {
 			compar.getSelectionModel().clearSelection();
 			numSel.clear();
 			
+			
 			// test
+			for (String rule : rules) {
+				System.out.println(rule);
+			}
 			List<FoodItem> temp = foodData.filterByNutrients(rules);
 			for (FoodItem foodItem: temp) {
 				System.out.println(foodItem.getFullName());

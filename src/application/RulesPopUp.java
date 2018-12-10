@@ -46,7 +46,7 @@ public class RulesPopUp {
 				// get the index of the removing target
 				int index = rulez.getSelectionModel().getSelectedIndex();
 				if (index != -1) {
-					System.out.println(index);
+//					System.out.println(index);
 					rules.remove(index);
 					rulez.getSelectionModel().select(-1);
 				}				

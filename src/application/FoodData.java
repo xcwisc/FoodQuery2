@@ -159,39 +159,39 @@ public class FoodData implements FoodDataADT<FoodItem> {
 			String comparator = parts[1];
 			double value = Double.parseDouble(parts[2]);
 			
-			System.out.println(nutrient);
-			System.out.println(comparator);
-			System.out.println(value);
+//			System.out.println(nutrient);
+//			System.out.println(comparator);
+//			System.out.println(value);
 			
 			// update the list
 			ans = indexesCopy.get(nutrient).rangeSearch(value, comparator);
 			// update the hashMap
 			BPTree<Double, FoodItem> BPTreeCalories = new BPTree<Double, FoodItem>(3);
-			for (FoodItem item : this.foodItemList) {
+			for (FoodItem item : ans) {
 				BPTreeCalories.insert(item.getNutrientValue("calories"), item);
 			}
 			indexesCopy.put("calories", BPTreeCalories);
 			
 			BPTree<Double, FoodItem> BPTreeFat = new BPTree<Double, FoodItem>(3);
-			for (FoodItem item : this.foodItemList) {
+			for (FoodItem item : ans) {
 				BPTreeFat.insert(item.getNutrientValue("fat"), item);
 			}
 			indexesCopy.put("fat", BPTreeFat);
 			
 			BPTree<Double, FoodItem> BPTreeCarbs = new BPTree<Double, FoodItem>(3);
-			for (FoodItem item : this.foodItemList) {
+			for (FoodItem item : ans) {
 				BPTreeCarbs.insert(item.getNutrientValue("carbs"), item);
 			}
 			indexesCopy.put("carbs", BPTreeCarbs);
 			
 			BPTree<Double, FoodItem> BPTreeFiber = new BPTree<Double, FoodItem>(3);
-			for (FoodItem item : this.foodItemList) {
+			for (FoodItem item : ans) {
 				BPTreeCalories.insert(item.getNutrientValue("fiber"), item);
 			}
 			indexesCopy.put("fiber", BPTreeFiber);
 			
 			BPTree<Double, FoodItem> BPTreeProtein = new BPTree<Double, FoodItem>(3);
-			for (FoodItem item : this.foodItemList) {
+			for (FoodItem item : ans) {
 				BPTreeCalories.insert(item.getNutrientValue("protein"), item);
 			}
 			indexesCopy.put("protein", BPTreeProtein);
