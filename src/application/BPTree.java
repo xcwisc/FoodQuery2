@@ -351,6 +351,7 @@ public class BPTree<K extends Comparable<K>, V> implements BPTreeADT<K, V> {
 			// the left-most leaf and work our way towards key parameter. This
 			// goes down the left most branch of a subtree
 			if (comparator.equals("<=") || key.compareTo(keys.get(0)) < 0) {
+//				System.out.println("Enters first if");
 				return children.get(0).rangeSearch(key, comparator, inRangeValues);
 			}
 			
@@ -358,14 +359,18 @@ public class BPTree<K extends Comparable<K>, V> implements BPTreeADT<K, V> {
 			// traversal to the end. When comparator is "==" we just want to find
 			// our key and then stop.
 			else {
-				
+//				System.out.println("Enters first else");
+
 				// Iterates though keys in the InternalNode
 				for (int i=0; i<keys.size()-1; i++) {
-					
+//					System.out.println("Enters first for");
+
 					// If the key we are looking for is between two keys in the
 					// InternalNode, we want to go down that branch
 					if (key.compareTo(keys.get(i)) >= 0 &&
 							key.compareTo(keys.get(i+1)) < 0) {
+//						System.out.println("Enters second loop");
+
 						return children.get(i+1).rangeSearch(key, comparator, inRangeValues);
 					}
 				}

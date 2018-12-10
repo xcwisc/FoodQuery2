@@ -34,7 +34,7 @@ public class CenterVboxWrapper {
 		foodItemsVbox = new VBox();
 		foodItemsVbox.setId("center-vbox");
 		this.tabelViewWrapper = new TableViewWrapper(foodData, mealInfoWrapper);
-		QueryBarWrapper queryBarWrapper = new QueryBarWrapper(comparors, labelz);
+		QueryBarWrapper queryBarWrapper = new QueryBarWrapper(comparors, labelz, foodData);
 		
 //		// The following stuff goes along the bottom of the window
 //		// It does things like altering the data in the foot item library

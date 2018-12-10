@@ -85,12 +85,12 @@ public class FoodData implements FoodDataADT<FoodItem> {
 			
 			BPTree<Double, FoodItem> BPTreeFiber = this.indexes.get("fiber");
 			for (FoodItem item : this.foodItemList) {
-				BPTreeCalories.insert(item.getNutrientValue("fiber"), item);
+				BPTreeFiber.insert(item.getNutrientValue("fiber"), item);
 			}
 			
 			BPTree<Double, FoodItem> BPTreeProtein = this.indexes.get("protein");
 			for (FoodItem item : this.foodItemList) {
-				BPTreeCalories.insert(item.getNutrientValue("protein"), item);
+				BPTreeProtein.insert(item.getNutrientValue("protein"), item);
 			}	
 			
 			br.close();
@@ -158,6 +158,11 @@ public class FoodData implements FoodDataADT<FoodItem> {
 			String nutrient = parts[0];
 			String comparator = parts[1];
 			double value = Double.parseDouble(parts[2]);
+			
+			System.out.println(nutrient);
+			System.out.println(comparator);
+			System.out.println(value);
+			
 			// update the list
 			ans = indexesCopy.get(nutrient).rangeSearch(value, comparator);
 			// update the hashMap

@@ -74,15 +74,17 @@ public class MealInfoWrapper {
 			if(event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2 && !data.isEmpty()) {
 				int index = list.getSelectionModel().getSelectedIndex();
 //				System.out.println(index);
-				FoodItem foodItem = data.get(index);
-				this.calories -= foodItem.getNutrientValue("calories");
-				this.fat -= foodItem.getNutrientValue("fat");
-				this.carbs -= foodItem.getNutrientValue("carbs");
-				this.fiber -= foodItem.getNutrientValue("fiber");
-				this.protein -= foodItem.getNutrientValue("protein");
-				updateAnalysis();
-				data.remove(index);
-				list.getSelectionModel().select(-1);
+				if (index != -1) {
+					FoodItem foodItem = data.get(index);
+					this.calories -= foodItem.getNutrientValue("calories");
+					this.fat -= foodItem.getNutrientValue("fat");
+					this.carbs -= foodItem.getNutrientValue("carbs");
+					this.fiber -= foodItem.getNutrientValue("fiber");
+					this.protein -= foodItem.getNutrientValue("protein");
+					updateAnalysis();
+					data.remove(index);
+					list.getSelectionModel().select(-1);
+				}				
 			} 
 		});
 		
