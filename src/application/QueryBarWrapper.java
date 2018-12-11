@@ -26,11 +26,11 @@ public class QueryBarWrapper {
 	HBox filterHbox;
 	
 	
-	public QueryBarWrapper(ObservableList<String> comparors, ObservableList<String> labelz, FoodDataADT<FoodItem> foodData) {
+	public QueryBarWrapper(ObservableList<String> comparors, ObservableList<String> labelz, FoodDataADT<FoodItem> foodData, TableViewWrapper tableViewWrapper) {
 		this.comparors = comparors;
 		this.labelz = labelz;
 		this.foodData = foodData;
-		RulesPopUp rulesPopUp = new RulesPopUp(rules);
+		RulesPopUp rulesPopUp = new RulesPopUp(rules, tableViewWrapper, foodData);
 		ComboBox compar = new ComboBox(comparors);
 		Label selLabel = new Label("Display food item with: ");
 		selLabel.setId("filter-label");
@@ -40,9 +40,9 @@ public class QueryBarWrapper {
 		filterHbox = new HBox();
 		Button addRule = new Button("Add Rule");
 		Button viewRules = new Button("View Rules");
-//		Button deleteRule = new Button("Delete Rule");
 		
 		addRule.setOnAction(e -> {
+			// get the value of nutirents and parse it
 			String nutrients = (String) j.getValue();
 			if ( nutrients == "Calories") {
 				nutrients = "calories";
@@ -54,23 +54,37 @@ public class QueryBarWrapper {
 				nutrients = "fiber";
 			} else if( nutrients == "Protein(g)") {
 				nutrients = "protein";
-			} 
-			String newRule = nutrients + " " + (String) compar.getValue() + " " + numSel.getText();
-			rules.add(newRule);
-			j.getSelectionModel().clearSelection();
-			compar.getSelectionModel().clearSelection();
-			numSel.clear();
-			
-			
-			// test
-			for (String rule : rules) {
-				System.out.println(rule);
 			}
-			List<FoodItem> temp = foodData.filterByNutrients(rules);
-			for (FoodItem foodItem: temp) {
-				System.out.println(foodItem.getFullName());
+			String comparator = (String) compar.getValue();
+			String compareValue = numSel.getText();
+			
+			if (nutrients != null && comparator != null && compareValue != null) {
+				// formulate the rule string
+				String newRule = nutrients + " " + comparator + " " + compareValue;
+				// add new rule to the rules ObservableList
+				rules.add(newRule);
+				
+				// clear out the query bars
+				j.getSelectionModel().clearSelection();
+				compar.getSelectionModel().clearSelection();
+				numSel.clear();
+				List<FoodItem> list = foodData.filterByNutrients(rules);
+	//			for (FoodItem foodItem : list) {
+	//				System.out.println(foodItem);
+	//			}
+	//			System.out.println("//////////////////////////");
+				tableViewWrapper.applyRules(list);
+				
+	//			// test
+	//			for (String rule : rules) {
+	//				System.out.println(rule);
+	//			}
+	//			List<FoodItem> temp = foodData.filterByNutrients(rules);
+	//			for (FoodItem foodItem: temp) {
+	//				System.out.println(foodItem.getFullName());
+	//			}
+	//			System.out.println("rule added");
 			}
-//			System.out.println("rule added");
 		});
 		viewRules.setOnAction(e -> rulesPopUp.display());
 //		deleteRule.setOnAction(e -> RulesPopUp.deleteRule());

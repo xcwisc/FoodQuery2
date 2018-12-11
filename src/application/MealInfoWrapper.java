@@ -117,15 +117,15 @@ public class MealInfoWrapper {
 		proteinCounter.getChildren().add(new Label("Total Protein(g): "));
 		proteinCounter.getChildren().add(proteinLabel);
 		
-		Button saveAndExit = new Button("Exit");
-		saveAndExit.setOnAction(e -> Platform.exit());
+//		Button saveAndExit = new Button("Exit");
+//		saveAndExit.setOnAction(e -> Platform.exit());
 
 		
 		// add all elements into the vBox
 		mealInfo.getChildren().addAll(
 			new HBox(yourMealLabel, clickToRemoveLabel), 
 			list, calorieCounter, fatCounter, carbCounter, 
-			fiberCounter, proteinCounter, saveAndExit);
+			fiberCounter, proteinCounter);
 	}
 	
 	public VBox getComponent() {

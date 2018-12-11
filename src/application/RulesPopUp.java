@@ -25,9 +25,13 @@ public class RulesPopUp {
 
 //    private static ObservableList<String> rules = FXCollections.observableArrayList();
 	private ObservableList<String> rules;
+	private TableViewWrapper tableViewWrapper;
+	private FoodDataADT<FoodItem> foodData;
 	
-    public RulesPopUp(ObservableList<String> rules) {
+    public RulesPopUp(ObservableList<String> rules, TableViewWrapper tableViewWrapper, FoodDataADT<FoodItem> foodData) {
     	this.rules = rules;
+    	this.tableViewWrapper = tableViewWrapper;
+    	this.foodData = foodData;
     }
     
 
@@ -49,6 +53,16 @@ public class RulesPopUp {
 //					System.out.println(index);
 					rules.remove(index);
 					rulez.getSelectionModel().select(-1);
+					tableViewWrapper.applyRules(foodData.filterByNutrients(rules));
+//					for (String rule : rules) {
+//						System.out.println(rule);
+//					}
+//					System.out.println("////////////////");
+					List<FoodItem> list = foodData.filterByNutrients(rules);
+//					for (FoodItem foodItem : list) {
+//						System.out.println(foodItem);
+//					}
+//					System.out.println("//////////////////////////");
 				}				
 			} 
 		});

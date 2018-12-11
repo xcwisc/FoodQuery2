@@ -11,6 +11,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -148,10 +149,14 @@ public class FoodData implements FoodDataADT<FoodItem> {
 		
 		// answer list to return
 		List<FoodItem> ans = new ArrayList<FoodItem>();
+		ans = this.foodItemList;
 		
 		// making a copy of the indexes hashmap
-		// !!!! this is a shallow copy
-		HashMap<String, BPTree<Double, FoodItem>> indexesCopy = (HashMap<String, BPTree<Double, FoodItem>>) this.indexes.clone();
+		HashMap<String, BPTree<Double, FoodItem>> indexesCopy = new HashMap<String, BPTree<Double, FoodItem>>();
+		for (Entry<String, BPTree<Double, FoodItem>> entry : this.indexes.entrySet()) {
+			indexesCopy.put(entry.getKey(), entry.getValue());
+	    }
+		
 
 		for (int i = 0; i < rules.size(); i++) {
 			String parts[] = rules.get(i).split(" ");
@@ -186,13 +191,13 @@ public class FoodData implements FoodDataADT<FoodItem> {
 			
 			BPTree<Double, FoodItem> BPTreeFiber = new BPTree<Double, FoodItem>(3);
 			for (FoodItem item : ans) {
-				BPTreeCalories.insert(item.getNutrientValue("fiber"), item);
+				BPTreeFiber.insert(item.getNutrientValue("fiber"), item);
 			}
 			indexesCopy.put("fiber", BPTreeFiber);
 			
 			BPTree<Double, FoodItem> BPTreeProtein = new BPTree<Double, FoodItem>(3);
 			for (FoodItem item : ans) {
-				BPTreeCalories.insert(item.getNutrientValue("protein"), item);
+				BPTreeProtein.insert(item.getNutrientValue("protein"), item);
 			}
 			indexesCopy.put("protein", BPTreeProtein);
 		}

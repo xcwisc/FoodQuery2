@@ -1,5 +1,7 @@
 package application;
 
+import java.util.List;
+
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ObservableValue;
@@ -110,7 +112,11 @@ public class TableViewWrapper {
                 
             }
         });
-
+	}
+	
+	public void applyRules(List<FoodItem> list) {
+		ObservableList<FoodItem> obList = FXCollections.observableArrayList(list);
+		table.setItems(obList);
 	}
 	
 	public void update() {
