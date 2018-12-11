@@ -22,10 +22,9 @@ import javafx.util.Callback;
  */
 public class TableViewWrapper {
 	
-	private TableView<FoodItem> table;
-	
-	private ObservableList<FoodItem> data;
-	private FoodDataADT<FoodItem> foodData;
+	private TableView<FoodItem> table; // table of food items
+	private ObservableList<FoodItem> data; // list of data for a single food item
+	private FoodDataADT<FoodItem> foodData; // methods and fields associated with a food item
 	
 	/**
 	 * Public constructor of TableViewWrapper class. Initializes the center panel of
@@ -113,7 +112,6 @@ public class TableViewWrapper {
                     row = (TableRow) node.getParent();
                 }
                 FoodItem food = (FoodItem) row.getItem();
-//                System.out.println(food.getItemName());
                 mealInfoWrapper.add(food);
                 
             }

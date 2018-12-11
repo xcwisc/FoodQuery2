@@ -23,10 +23,8 @@ import javafx.scene.layout.*;
 public class Main extends Application {
 	
 	private ObservableList<String> labelz = FXCollections.observableArrayList("Calories", "Fat(g)", "Carbs(g)", "Fiber(g)","Protein(g)");
+	private ObservableList<String> comparors = FXCollections.observableArrayList("==", ">=", "<=");
 	
-	private ObservableList<String> comparors = FXCollections.observableArrayList("==", ">=", "=<");
-	
-		
 	/**
 	 * Initializes the GUI and displays it on the monitor.
 	 * @param primaryStage

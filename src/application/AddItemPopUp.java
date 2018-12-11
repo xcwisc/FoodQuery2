@@ -43,8 +43,7 @@ public class AddItemPopUp {
 		      
 		popupwindow.initModality(Modality.APPLICATION_MODAL);
 		popupwindow.setTitle("Add item");
-		         
-		Label label1= new Label("Pop up window now displayed");	           
+		                    
 		Button button1= new Button("Close this pop up window");
 		     
 		button1.setOnAction(e -> popupwindow.close());
@@ -127,13 +126,6 @@ public class AddItemPopUp {
 	 */
 	public void update(String itemName, String brand, String calories, String fat, String carbs, String fiber,
 			String protein) {
-//		System.out.println(itemName);
-//		System.out.println(brand);
-//		System.out.println(calories);
-//		System.out.println(fat);
-//		System.out.println(carbs);
-//		System.out.println(fiber);
-//		System.out.println(protein);
 		
 		// generate a id for the food
 		String uniqueID = UUID.randomUUID().toString();

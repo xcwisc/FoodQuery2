@@ -76,25 +76,12 @@ public class QueryBarWrapper {
 				compar.getSelectionModel().clearSelection();
 				numSel.clear();
 				List<FoodItem> list = foodData.filterByNutrients(rules);
-	//			for (FoodItem foodItem : list) {
-	//				System.out.println(foodItem);
-	//			}
-	//			System.out.println("//////////////////////////");
+	
 				tableViewWrapper.applyRules(list);
 				
-	//			// test
-	//			for (String rule : rules) {
-	//				System.out.println(rule);
-	//			}
-	//			List<FoodItem> temp = foodData.filterByNutrients(rules);
-	//			for (FoodItem foodItem: temp) {
-	//				System.out.println(foodItem.getFullName());
-	//			}
-	//			System.out.println("rule added");
 			}
 		});
 		viewRules.setOnAction(e -> rulesPopUp.display());
-//		deleteRule.setOnAction(e -> RulesPopUp.deleteRule());
 		filterHbox.getChildren().addAll(selLabel, j, compar, numSel, addRule,viewRules);
 	}
 	

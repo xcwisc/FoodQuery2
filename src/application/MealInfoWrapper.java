@@ -29,14 +29,18 @@ import javafx.util.Callback;
  *
  */
 public class MealInfoWrapper {
-	private VBox mealInfo;
-	private ObservableList<FoodItem> data;
-	private ListView<FoodItem> list;
+	private VBox mealInfo; // VBox to hold all the info for a meal
+	private ObservableList<FoodItem> data; // data of a single food item
+	private ListView<FoodItem> list; // List of items in meal
+	
+	// Nutrition counts in meal
 	private double calories;
 	private double fat;
 	private double carbs;
 	private double fiber;
 	private double protein;
+	
+	// Labels for meal nutrition section
 	private Label caloriesLabel;
 	private Label fatLabel;
 	private Label carbsLabel;
@@ -75,7 +79,6 @@ public class MealInfoWrapper {
 		list.setOnMouseClicked(event -> {
 			if(event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2 && !data.isEmpty()) {
 				int index = list.getSelectionModel().getSelectedIndex();
-//				System.out.println(index);
 				if (index != -1) {
 					FoodItem foodItem = data.get(index);
 					this.calories -= foodItem.getNutrientValue("calories");
@@ -118,10 +121,6 @@ public class MealInfoWrapper {
 		fiberCounter.getChildren().add(fiberLabel);
 		proteinCounter.getChildren().add(new Label("Total Protein(g): "));
 		proteinCounter.getChildren().add(proteinLabel);
-		
-//		Button saveAndExit = new Button("Exit");
-//		saveAndExit.setOnAction(e -> Platform.exit());
-
 		
 		// add all elements into the vBox
 		mealInfo.getChildren().addAll(

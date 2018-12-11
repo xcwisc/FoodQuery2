@@ -11,31 +11,18 @@ import java.util.List;
  */
 public class FoodItem {
 
-	// The id of the food item.
-	private String id;
-	// The name of the food item.
-	private String itemName;
-	private String brand;
+	
+	private String id; // The id of the food item.
+	private String itemName; // The name of the food item.
+	private String brand; // Brand of the food item
+	private HashMap<String, Double> nutrients; // Stores nutrients for a food item.
+											  // Nutrient name is the key
 
 	/**
 	 * Constructor
 	 * 
-	 * @param name
-	 *            name of the food item
-	 * @param id
-	 *            unique id of the food item
-	 */
-
-	// Map of nutrients and value.
-	private HashMap<String, Double> nutrients;
-
-	/**
-	 * Constructor
-	 * 
-	 * @param name
-	 *            name of the food item
-	 * @param id
-	 *            unique id of the food item
+	 * @param name of the food item
+	 * @param id unique to the food item
 	 */
 	public FoodItem(String id, String itemName, String brand, String calories, String fat, String carbs, String fiber,
 			String protein) {
@@ -67,7 +54,6 @@ public class FoodItem {
 	public String getBrand() {
 		return this.brand;
 	}
-
 
 	/**
 	 * Gets the nutrients of the food item

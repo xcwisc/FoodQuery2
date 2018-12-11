@@ -60,19 +60,13 @@ public class RulesPopUp {
 				// get the index of the removing target
 				int index = rulez.getSelectionModel().getSelectedIndex();
 				if (index != -1) {
-					//					System.out.println(index);
+					
 					rules.remove(index);
 					rulez.getSelectionModel().select(-1);
 					tableViewWrapper.applyRules(foodData.filterByNutrients(rules));
-					//					for (String rule : rules) {
-					//						System.out.println(rule);
-					//					}
-					//					System.out.println("////////////////");
+
 					List<FoodItem> list = foodData.filterByNutrients(rules);
-					//					for (FoodItem foodItem : list) {
-					//						System.out.println(foodItem);
-					//					}
-					//					System.out.println("//////////////////////////");
+
 				}				
 			} 
 		});

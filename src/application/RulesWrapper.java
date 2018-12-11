@@ -11,8 +11,8 @@ import javafx.scene.text.Text;
  *
  */
 public class RulesWrapper {
-	private HBox rule;
-	
+	private HBox rule; // a single rule
+
 	/**
 	 * Public constructor for RulesWrapper. Initializes the data in a 
 	 * single rule.
@@ -27,7 +27,7 @@ public class RulesWrapper {
 		Button deleteButton = new Button("Delete Rule");
 		rule.getChildren().addAll(attributeText, comparisonText, numberText, deleteButton);
 	}
-	
+
 	/**
 	 * Accessor of a single rule
 	 * @return

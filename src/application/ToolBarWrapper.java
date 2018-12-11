@@ -41,7 +41,6 @@ public class ToolBarWrapper {
 		this.labelName = labelName;
 		label = new Label(this.labelName);
 		label.setId("nav-bar-brand");
-		// label.setFont(new Font(fontFamily, fontSize));
 		Button addFoodItem = new Button("Add Food Item");
 		addFoodItem.setId("nav-bar-button");
 		Button loadFoodList = new Button("Load New Food List");
