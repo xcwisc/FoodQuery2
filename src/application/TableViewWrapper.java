@@ -34,7 +34,7 @@ public class TableViewWrapper {
 		table = new TableView<FoodItem>();
 		                
         TableColumn<FoodItem, String> itemNameCol = new TableColumn<FoodItem, String>("Item Name");
-        itemNameCol.setMinWidth(100);
+        itemNameCol.setMinWidth(250);
         itemNameCol.setCellValueFactory(
                 new PropertyValueFactory<FoodItem, String>("itemName"));
  

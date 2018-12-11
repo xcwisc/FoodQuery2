@@ -44,7 +44,7 @@ public class Main extends Application {
 			root.setRight(mealInfoWrapper.getComponent());
 			root.setCenter(centerVboxWrapper.getComponent());
 
-			Scene scene = new Scene(root, 1000, 500);
+			Scene scene = new Scene(root, 1150, 500);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();

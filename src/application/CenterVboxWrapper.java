@@ -68,7 +68,7 @@ public class CenterVboxWrapper {
 		
 		Label newLabel = new Label("Available Food Items");
 		newLabel.setId("title");
-		Label newerLabel = new Label("  (double click item to add to your meal)");
+		Label newerLabel = new Label("  (Double click item to add to your meal)");
 		newerLabel.setId("note-label");
 				
 //		newerLabel.setFont(new Font("NTR", 10));	
