@@ -13,6 +13,13 @@ import javafx.scene.text.Text;
 public class RulesWrapper {
 	private HBox rule;
 	
+	/**
+	 * Public constructor for RulesWrapper. Initializes the data in a 
+	 * single rule.
+	 * @param attribute ("Calories", "Carbs, etc.)
+	 * @param comparison ("<=", ">=", "==")
+	 * @param number (some number to complete food rule)
+	 */
 	public RulesWrapper(String attribute, String comparison, Double number) {
 		Text attributeText = new Text(attribute);
 		Text comparisonText = new Text(comparison);
@@ -21,6 +28,10 @@ public class RulesWrapper {
 		rule.getChildren().addAll(attributeText, comparisonText, numberText, deleteButton);
 	}
 	
+	/**
+	 * Accessor of a single rule
+	 * @return
+	 */
 	public HBox getComponent() {
 		return rule;
 	}

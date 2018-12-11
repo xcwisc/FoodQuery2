@@ -19,61 +19,68 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.*;
 
+/**
+ * Wrapper class for the data contained in the view rules pop up window
+ * @author A-team 75
+ *
+ */
 public class RulesPopUp {
-    
 
+	private ObservableList<String> rules; // list of all rules
+	private TableViewWrapper tableViewWrapper; // table to hold components of the rules pop up
+	private FoodDataADT<FoodItem> foodData; // methods and fields of food item
 
-//    private static ObservableList<String> rules = FXCollections.observableArrayList();
-	private ObservableList<String> rules;
-	private TableViewWrapper tableViewWrapper;
-	private FoodDataADT<FoodItem> foodData;
-	
-    public RulesPopUp(ObservableList<String> rules, TableViewWrapper tableViewWrapper, FoodDataADT<FoodItem> foodData) {
-    	this.rules = rules;
-    	this.tableViewWrapper = tableViewWrapper;
-    	this.foodData = foodData;
-    }
-    
+	/**
+	 * Public constructor.
+	 * @param rules
+	 * @param tableViewWrapper
+	 * @param foodData
+	 */
+	public RulesPopUp(ObservableList<String> rules, TableViewWrapper tableViewWrapper, 
+			FoodDataADT<FoodItem> foodData) {
+		this.rules = rules;
+		this.tableViewWrapper = tableViewWrapper;
+		this.foodData = foodData;
+	}
 
+	/**
+	 * Method to display the food rule data in the pop up window of the GUI
+	 */
+	public void display() {
 
-    public void display() {
-        
-        ListView<String> rulez= new ListView<String>();
-        Stage popup = new Stage();
-        popup.initModality(Modality.APPLICATION_MODAL);
-        popup.setTitle("Rules List");
+		ListView<String> rulez= new ListView<String>();
+		Stage popup = new Stage();
+		popup.initModality(Modality.APPLICATION_MODAL);
+		popup.setTitle("Rules List");
 
-        rulez.setItems(rules);
-        
-        rulez.setOnMouseClicked(event -> {
+		rulez.setItems(rules);
+
+		rulez.setOnMouseClicked(event -> {
 			if(event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2 && !rules.isEmpty()) {
 				// get the index of the removing target
 				int index = rulez.getSelectionModel().getSelectedIndex();
 				if (index != -1) {
-//					System.out.println(index);
+					//					System.out.println(index);
 					rules.remove(index);
 					rulez.getSelectionModel().select(-1);
 					tableViewWrapper.applyRules(foodData.filterByNutrients(rules));
-//					for (String rule : rules) {
-//						System.out.println(rule);
-//					}
-//					System.out.println("////////////////");
+					//					for (String rule : rules) {
+					//						System.out.println(rule);
+					//					}
+					//					System.out.println("////////////////");
 					List<FoodItem> list = foodData.filterByNutrients(rules);
-//					for (FoodItem foodItem : list) {
-//						System.out.println(foodItem);
-//					}
-//					System.out.println("//////////////////////////");
+					//					for (FoodItem foodItem : list) {
+					//						System.out.println(foodItem);
+					//					}
+					//					System.out.println("//////////////////////////");
 				}				
 			} 
 		});
-        
-        
-        
-        
-        Scene ruleScene= new Scene(rulez, 400, 400);
-        popup.setScene(ruleScene);
-          
-        popup.showAndWait();
-    }
+
+		Scene ruleScene= new Scene(rulez, 400, 400);
+		popup.setScene(ruleScene);
+
+		popup.showAndWait();
+	}
 }
 

@@ -17,18 +17,25 @@ import javafx.scene.layout.HBox;
  *
  */
 public class QueryBarWrapper {
+
+	private ObservableList<String> comparors; // list of comparison symbols
+	private ObservableList<String> labelz; // list of item attribute labels
+	private ObservableList<String> rules; // list of added food rules
+	private FoodDataADT<FoodItem> foodData; // methods and fields associated with food item type
+    private String rule; // a single rule
+	HBox filterHbox; // HBox to hold all the components of the query bar
 	
-	private ObservableList<String> comparors;
-	private ObservableList<String> labelz;
-	private ObservableList<String> rules = FXCollections.observableArrayList();
-	private FoodDataADT<FoodItem> foodData;
-    private String rule;
-	HBox filterHbox;
-	
-	
+	/**
+	 * Public constructor of the rules input section of the main GUI window
+	 * @param comparors 
+	 * @param labelz 
+	 * @param foodData 
+	 * @param tableViewWrapper
+	 */
 	public QueryBarWrapper(ObservableList<String> comparors, ObservableList<String> labelz, FoodDataADT<FoodItem> foodData, TableViewWrapper tableViewWrapper) {
 		this.comparors = comparors;
 		this.labelz = labelz;
+		rules = FXCollections.observableArrayList();
 		this.foodData = foodData;
 		RulesPopUp rulesPopUp = new RulesPopUp(rules, tableViewWrapper, foodData);
 		ComboBox compar = new ComboBox(comparors);
@@ -91,6 +98,10 @@ public class QueryBarWrapper {
 		filterHbox.getChildren().addAll(selLabel, j, compar, numSel, addRule,viewRules);
 	}
 	
+	/**
+	 * Accessor method for the components in the query bar
+	 * @return
+	 */
 	public HBox getComponent() {
 		return this.filterHbox;
 	}

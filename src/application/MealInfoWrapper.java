@@ -43,7 +43,9 @@ public class MealInfoWrapper {
 	private Label fiberLabel;
 	private Label proteinLabel;
 	
-	
+	/**
+	 * Public constructor for the Meal Info sidebar
+	 */
 	public MealInfoWrapper() {
 		mealInfo = new VBox();
 		mealInfo.setId("meal-info");
@@ -128,10 +130,20 @@ public class MealInfoWrapper {
 			fiberCounter, proteinCounter);
 	}
 	
+	/**
+	 * Accessor of all components in the Meal sidebar
+	 * @return VBox
+	 */
 	public VBox getComponent() {
 		return this.mealInfo;
 	}
 	
+	/**
+	 * Adds a food item to the backend meal list. Updates nutrition
+	 * counts. Updates the front end with the new data by calling
+	 * updateAnalysis().
+	 * @param foodItem
+	 */
 	public void add(FoodItem foodItem) {
 		this.data.add(foodItem);
 		this.calories += foodItem.getNutrientValue("calories");
@@ -142,6 +154,10 @@ public class MealInfoWrapper {
 		updateAnalysis();
 	}
 	
+	/**
+	 * Resets text of the nutrition data in the GUI accounting for
+	 * new data.
+	 */
 	private void updateAnalysis() {
 		this.caloriesLabel.setText(Double.toString(this.calories));
 		this.fatLabel.setText(Double.toString(this.fat));

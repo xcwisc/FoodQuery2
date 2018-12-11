@@ -21,20 +21,29 @@ import javafx.stage.*;
  */
 public class AddItemPopUp {
 	
-	private CenterVboxWrapper centerVboxWrapper;
-	private FoodDataADT<FoodItem> foodData;
+	private CenterVboxWrapper centerVboxWrapper; // GUI center panel components
+	private FoodDataADT<FoodItem> foodData; // methods and fields associated with a food item
 	
+	/**
+	 * Public constructor
+	 * @param centerVboxWrapper
+	 * @param foodData
+	 */
 	public AddItemPopUp(CenterVboxWrapper centerVboxWrapper, FoodDataADT<FoodItem> foodData) {
 		this.centerVboxWrapper = centerVboxWrapper;
 		this.foodData = foodData;
 	}
+	
+	/**
+	 * Opens a pop up window that asks user for input in order to add a new 
+	 * food item to the food list.
+	 */
 	public void display() {
 		Stage popupwindow=new Stage();
 		      
 		popupwindow.initModality(Modality.APPLICATION_MODAL);
 		popupwindow.setTitle("Add item");
-		      
-		      
+		         
 		Label label1= new Label("Pop up window now displayed");	           
 		Button button1= new Button("Close this pop up window");
 		     
@@ -98,15 +107,24 @@ public class AddItemPopUp {
 		hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
 		hbBtn.getChildren().add(btn);
 		grid.add(hbBtn, 1, 9);
-		
-
-		      
+		   
 		Scene scene1= new Scene(grid, 400, 400);		      
 		popupwindow.setScene(scene1);		      
 		popupwindow.showAndWait();
 		       
 	}
 	
+	/**
+	 * Updates the food list in the main GUI with the new food item from the
+	 * add food item window
+	 * @param itemName
+	 * @param brand
+	 * @param calories
+	 * @param fat
+	 * @param carbs
+	 * @param fiber
+	 * @param protein
+	 */
 	public void update(String itemName, String brand, String calories, String fat, String carbs, String fiber,
 			String protein) {
 //		System.out.println(itemName);

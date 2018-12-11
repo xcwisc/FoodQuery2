@@ -27,7 +27,10 @@ public class Main extends Application {
 	private ObservableList<String> comparors = FXCollections.observableArrayList("==", ">=", "=<");
 	
 		
-		
+	/**
+	 * Initializes the GUI and displays it on the monitor.
+	 * @param primaryStage
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -53,6 +56,10 @@ public class Main extends Application {
 		}
 	}
 	
+	/**
+	 * Launches the program
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}

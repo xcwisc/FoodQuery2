@@ -42,7 +42,7 @@ public class BPTree<K extends Comparable<K>, V> implements BPTreeADT<K, V> {
 					"Illegal branching factor: " + branchingFactor);
 		}
 		this.root = new LeafNode();
-		this.branchingFactor = branchingFactor;
+		this.branchingFactor = 3; // Hard coded because this code has bugs for > 3
 	}
 
 	/**
@@ -74,7 +74,6 @@ public class BPTree<K extends Comparable<K>, V> implements BPTreeADT<K, V> {
 			}
 		}
 	}
-
 
 	/**
 	 * Performs a range search on a B-plus tree. Returns a
@@ -109,7 +108,6 @@ public class BPTree<K extends Comparable<K>, V> implements BPTreeADT<K, V> {
 	private List<V> rangeSearchHelper(K key, String comparator, List<V> inRangeValues) {
 		return root.rangeSearch(key, comparator, inRangeValues);
 	}
-
 
 	/**
 	 * Converts B-plus tree to a string representation.
@@ -565,45 +563,5 @@ public class BPTree<K extends Comparable<K>, V> implements BPTreeADT<K, V> {
 		}
 
 	} // End of class LeafNode
-
-// TODO I think we delete this stuff
-//	
-//	/**
-//	 * Contains a basic test scenario for a BPTree instance.
-//	 * It shows a simple example of the use of this class
-//	 * and its related types.
-//	 * 
-//	 * @param args
-//	 */
-//	public static void main(String[] args) {
-//		// create empty BPTree with branching factor of 3
-//		BPTree<Integer, Integer> bpTree = new BPTree<>(3);
-//
-//		// create a pseudo random number generator
-//		Random rnd1 = new Random();
-//
-//		// some value to add to the BPTree
-//		int[] dd = {0,1,2,3,4,5,6,7,8,9};
-//
-//		// build an ArrayList of those value and add to BPTree also
-//		// allows for comparing the contents of the ArrayList 
-//		// against the contents and functionality of the BPTree
-//		// does not ensure BPTree is implemented correctly
-//		// just that it functions as a data structure with
-//		// insert, rangeSearch, and toString() working.
-//		List<Integer> list = new ArrayList<>();
-//		for (int i = 0; i < 10; i++) {
-//			int j = dd[rnd1.nextInt(10)];
-//			list.add(j);
-//			bpTree.insert(j, j);
-//			System.out.println("\n\nTree structure: insert " + j + "\n" + bpTree.toString());
-//		}
-//
-//
-//		List<Integer> filteredValues = bpTree.rangeSearch(6, "<=");
-//		System.out.println("Filtered values: " + filteredValues.toString());
-//
-//
-//	}
 
 } // End of class BPTree
