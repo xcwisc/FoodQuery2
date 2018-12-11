@@ -22,8 +22,8 @@
 - [X] test BPtree
 
 #### Arjun Sachar
-- [ ] define the rule
-- [ ] delete the rules (add to the front-end)
+- [X] define the rule
+- [X] delete the rules (add to the front-end)
 
 #### Micah Jona
 - [X] save food list

@@ -25,16 +25,22 @@ import javafx.stage.Stage;
  *
  */
 public class ToolBarWrapper {
-	private String labelName;
-	private Label label;
-	private ToolBar toolBar;
+	private String labelName; // Title of program
+	private Label label; // Label with title of program to display in the toolbar
+	private ToolBar toolBar; // The toolbar along the top of the GUI
 
-	public ToolBarWrapper(CenterVboxWrapper centerVboxWrapper, FoodDataADT<FoodItem> foodData, String labelName,
-			Stage primaryStage) {
+	/**
+	 * Public constructor initializes the toolbar of GUI
+	 * @param centerVboxWrapper
+	 * @param foodData
+	 * @param labelName
+	 * @param primaryStage
+	 */
+	public ToolBarWrapper(CenterVboxWrapper centerVboxWrapper, FoodDataADT<FoodItem> foodData, 
+			String labelName, Stage primaryStage) {
 		this.labelName = labelName;
 		label = new Label(this.labelName);
 		label.setId("nav-bar-brand");
-		// label.setFont(new Font(fontFamily, fontSize));
 		Button addFoodItem = new Button("Add Food Item");
 		addFoodItem.setId("nav-bar-button");
 		Button loadFoodList = new Button("Load New Food List");
@@ -53,7 +59,7 @@ public class ToolBarWrapper {
 				openFile(foodData, file.toString(), centerVboxWrapper);
 			}
 		});
-		
+
 		saveFoodList.setOnAction(e -> {
 			FileChooser fileChooser = new FileChooser();
 			fileChooser.setTitle("Save Food List");
@@ -69,22 +75,33 @@ public class ToolBarWrapper {
 
 	}
 
-	// extension filter
+	/**
+	 * Filters extension for file type to load
+	 * @param fileChooser
+	 */
 	private static void configureFileChooser(final FileChooser fileChooser) {
 		fileChooser.setTitle("Open a .csv File");
 		fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
 		fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("CSV", "*.csv"));
 	}
 
-	
-
-	private void openFile(FoodDataADT<FoodItem> foodData, String path, CenterVboxWrapper centerVboxWrapper) {
+	/**
+	 * Pulls up a window to load a new food list csv into the table
+	 * @param foodData
+	 * @param path
+	 * @param centerVboxWrapper
+	 */
+	private void openFile(FoodDataADT<FoodItem> foodData, String path, 
+			CenterVboxWrapper centerVboxWrapper) {
 		foodData.loadFoodItems(path);
 		TableViewWrapper tableViewWrapper = centerVboxWrapper.getTabelViewWrapper();
 		tableViewWrapper.update();
 	}
 
-
+	/**
+	 * Accessor of components in the toolbar
+	 * @return
+	 */
 	public ToolBar getComponent() {
 		return this.toolBar;
 	}

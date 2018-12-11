@@ -22,11 +22,16 @@ import javafx.util.Callback;
  */
 public class TableViewWrapper {
 	
-	private TableView<FoodItem> table;
+	private TableView<FoodItem> table; // table of food items
+	private ObservableList<FoodItem> data; // list of data for a single food item
+	private FoodDataADT<FoodItem> foodData; // methods and fields associated with a food item
 	
-	private ObservableList<FoodItem> data;
-	private FoodDataADT<FoodItem> foodData;
-	
+	/**
+	 * Public constructor of TableViewWrapper class. Initializes the center panel of
+	 * the GUI.
+	 * @param foodData
+	 * @param mealInfoWrapper
+	 */
 	@SuppressWarnings("unchecked")
 	public TableViewWrapper(FoodDataADT<FoodItem> foodData, MealInfoWrapper mealInfoWrapper) {
 		this.foodData = foodData;
@@ -107,23 +112,33 @@ public class TableViewWrapper {
                     row = (TableRow) node.getParent();
                 }
                 FoodItem food = (FoodItem) row.getItem();
-//                System.out.println(food.getItemName());
                 mealInfoWrapper.add(food);
                 
             }
         });
 	}
 	
+	/**
+	 * Displays only food items who conform to all user defined rules
+	 * @param list of food items
+	 */
 	public void applyRules(List<FoodItem> list) {
 		ObservableList<FoodItem> obList = FXCollections.observableArrayList(list);
 		table.setItems(obList);
 	}
 	
+	/**
+	 * Updates the table of food items when new items are added to the list
+	 */
 	public void update() {
 		this.data = FXCollections.observableArrayList(foodData.getAllFoodItems());
 		table.setItems(this.data);
 	}
 	
+	/**
+	 * Accessor method of components that make up center panel of GUI
+	 * @return TableView<FoodItem>
+	 */
 	public TableView<FoodItem> getComponent() {
 		return this.table;
 	}
