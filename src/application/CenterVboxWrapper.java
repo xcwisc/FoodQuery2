@@ -38,24 +38,35 @@ public class CenterVboxWrapper {
 	 */
 	public CenterVboxWrapper(FoodDataADT<FoodItem> foodData, ObservableList<String> labelz, 
 			ObservableList<String> comparors, Stage primaryStage, MealInfoWrapper mealInfoWrapper) {
+		
+		//set foodData for the table
 		this.foodData = foodData;
+		
+		//make new vbox all items in the center of the UI
 		foodItemsVbox = new VBox();
 		foodItemsVbox.setId("center-vbox");
+		
+		//make a new table using given food data and meal info wrapper
 		this.tabelViewWrapper = new TableViewWrapper(foodData, mealInfoWrapper);
+		
+		//make a new bar for adding and viewing rules
 		QueryBarWrapper queryBarWrapper = new QueryBarWrapper(comparors, labelz, foodData, tabelViewWrapper);
-
+		
+		//set title of the table
 		Label newLabel = new Label("Available Food Items");
 		newLabel.setId("title");
 		Label newerLabel = new Label("  (Double click item to add to your meal)");
 		newerLabel.setId("note-label");
-
+		
+		//add titles to a new hbox
 		HBox newHbox = new HBox(newLabel, newerLabel);
-
+		
+		//set the central vbox to contain table, table titles, and query bar
 		foodItemsVbox.getChildren().addAll(
 				newHbox,
 				tabelViewWrapper.getComponent(),
 				queryBarWrapper.getComponent()
-				//				new HBox(addFoodItem, loadFoodList, saveFoodList)	
+					
 				);	
 	}
 

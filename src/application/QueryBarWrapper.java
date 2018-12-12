@@ -49,7 +49,7 @@ public class QueryBarWrapper {
 		Button viewRules = new Button("View Rules");
 		
 		addRule.setOnAction(e -> {
-			// get the value of nutirents and parse it
+			// get the value of nutrients and parse it
 			String nutrients = (String) j.getValue();
 			if ( nutrients == "Calories") {
 				nutrients = "calories";

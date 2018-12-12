@@ -43,17 +43,15 @@ public class AddItemPopUp {
 
 		popupwindow.initModality(Modality.APPLICATION_MODAL);
 		popupwindow.setTitle("Add item");
-
-		Button button1= new Button("Close this pop up window");
-
-		button1.setOnAction(e -> popupwindow.close());
-
+		
+		//Create a grid in the center of the pop up
 		GridPane grid = new GridPane();
 		grid.setAlignment(Pos.CENTER);
 		grid.setHgap(10);
 		grid.setVgap(10);
 		grid.setPadding(new Insets(25, 25, 25, 25));
-
+		
+		//add text fields as well as labels for all of the text fields to the grid
 		Text scenetitle = new Text("Enter Details:");
 		scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		grid.add(scenetitle, 0, 0, 2, 1);	
@@ -85,11 +83,13 @@ public class AddItemPopUp {
 		grid.add(test8, 0, 7);
 		TextField test9 = new TextField();
 		grid.add(test9, 1, 7);
-
-
+		
+		//add a submit button
 		Button btn = new Button("Submit Item");
+		
 		btn.setOnAction(e -> {
-			//get the info
+			
+			//get the values that the user entered 
 			String itemName = userTextField.getText();
 			String brand = pwBox.getText();
 			String calories = test1.getText();
@@ -97,7 +97,8 @@ public class AddItemPopUp {
 			String carbs = test5.getText();
 			String fiber = test7.getText();
 			String protein = test9.getText();
-			//make sure no values are negative
+			
+			//make sure no values are negative (names can be numbers)
 			try { double y = Double.parseDouble(calories);
 			if (y<0)
 				throw new IllegalArgumentException("") ;
@@ -117,7 +118,7 @@ public class AddItemPopUp {
 			catch(Exception x)
 			{System.out.println("can not have negative values");
 				return; }
-			//update
+			//update food data 
 			update(itemName, brand, calories, fat, carbs, fiber, protein);
 			popupwindow.close();
 		});
