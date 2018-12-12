@@ -66,8 +66,11 @@ public class FoodData implements FoodDataADT<FoodItem> {
 
 			BufferedReader br = new BufferedReader(new InputStreamReader(inputFS));
 			// create a input pipeline that parse the csv file and add the parsed foodItem to the list
-			br.lines().filter(data -> data.length() > 11).map(rule -> parser(rule))
-					.forEach(food -> this.foodItemList.add(food));
+			this.foodItemList = br
+					.lines()
+					.filter(data -> data.length() > 11)
+					.map(rule -> parser(rule))
+					.collect(Collectors.toList());
 			
 			// Sorts the list of food alphabetically before inserting
 			// into the B Plus Tree
@@ -81,30 +84,35 @@ public class FoodData implements FoodDataADT<FoodItem> {
 			
 			// Construct 5 BPtrees. Each tree corresponds to sorting 
 			// the items by one of the nutrients
-			BPTree<Double, FoodItem> BPTreeCalories = this.indexes.get("calories");
+			BPTree<Double, FoodItem> BPTreeCalories = new BPTree<Double, FoodItem>(3);
 			for (FoodItem item : this.foodItemList) {
 				BPTreeCalories.insert(item.getNutrientValue("calories"), item);
 			}
+			this.indexes.put("calories", BPTreeCalories);
 			
-			BPTree<Double, FoodItem> BPTreeFat = this.indexes.get("fat");
+			BPTree<Double, FoodItem> BPTreeFat = new BPTree<Double, FoodItem>(3);
 			for (FoodItem item : this.foodItemList) {
 				BPTreeFat.insert(item.getNutrientValue("fat"), item);
 			}
+			this.indexes.put("fat", BPTreeCalories);
 			
-			BPTree<Double, FoodItem> BPTreeCarbs = this.indexes.get("carbs");
+			BPTree<Double, FoodItem> BPTreeCarbs = new BPTree<Double, FoodItem>(3);
 			for (FoodItem item : this.foodItemList) {
 				BPTreeCarbs.insert(item.getNutrientValue("carbs"), item);
 			}
+			this.indexes.put("carbs", BPTreeCalories);
 			
-			BPTree<Double, FoodItem> BPTreeFiber = this.indexes.get("fiber");
+			BPTree<Double, FoodItem> BPTreeFiber = new BPTree<Double, FoodItem>(3);
 			for (FoodItem item : this.foodItemList) {
 				BPTreeFiber.insert(item.getNutrientValue("fiber"), item);
 			}
+			this.indexes.put("fiber", BPTreeCalories);
 			
-			BPTree<Double, FoodItem> BPTreeProtein = this.indexes.get("protein");
+			BPTree<Double, FoodItem> BPTreeProtein = new BPTree<Double, FoodItem>(3);
 			for (FoodItem item : this.foodItemList) {
 				BPTreeProtein.insert(item.getNutrientValue("protein"), item);
 			}	
+			this.indexes.put("protein", BPTreeCalories);
 			
 			br.close();
 		} catch (Exception e) {

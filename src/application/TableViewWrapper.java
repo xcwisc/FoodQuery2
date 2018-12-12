@@ -1,5 +1,7 @@
 package application;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javafx.beans.property.SimpleDoubleProperty;
@@ -24,8 +26,9 @@ import javafx.util.Callback;
 public class TableViewWrapper {
 	
 	private TableView<FoodItem> table; // table of food items
-	private ObservableList<FoodItem> data; // list of data for a single food item
+	private ObservableList<FoodItem> data; // list of data for all food items
 	private FoodDataADT<FoodItem> foodData; // methods and fields associated with a food item
+	private ObservableList<String> rules;
 	
 	/**
 	 * Public constructor of TableViewWrapper class. Initializes the center panel of
@@ -34,10 +37,12 @@ public class TableViewWrapper {
 	 * @param mealInfoWrapper
 	 */
 	@SuppressWarnings("unchecked")
-	public TableViewWrapper(FoodDataADT<FoodItem> foodData, MealInfoWrapper mealInfoWrapper) {
+	public TableViewWrapper(FoodDataADT<FoodItem> foodData, MealInfoWrapper mealInfoWrapper, 
+			ObservableList<String> rules) {
 		this.foodData = foodData;
 		this.data = FXCollections.observableArrayList(foodData.getAllFoodItems());
 		table = new TableView<FoodItem>();
+		this.rules = rules;
 		                
         TableColumn<FoodItem, String> itemNameCol = new TableColumn<FoodItem, String>("Item Name");
         itemNameCol.setMinWidth(250);
@@ -171,6 +176,24 @@ public class TableViewWrapper {
 	 */
 	public void update() {
 		this.data = FXCollections.observableArrayList(foodData.getAllFoodItems());
+		table.setItems(this.data);
+	}
+	
+	public void update(FoodItem addedItem) {
+		
+		this.data = FXCollections.observableArrayList(foodData.filterByNutrients(rules));
+		foodData.addFoodItem(addedItem);
+		this.data.add(addedItem);
+		
+		// Places new food item in proper sorted spot in list
+		Collections.sort(data, new Comparator<FoodItem>() {
+			public int compare(FoodItem f1, FoodItem f2) {
+				Character character = f1.itemName.toLowerCase().charAt(0);
+				Character oCharacter = f2.itemName.toLowerCase().charAt(0);
+				return character.compareTo(oCharacter);
+			}
+		});
+				
 		table.setItems(this.data);
 	}
 	

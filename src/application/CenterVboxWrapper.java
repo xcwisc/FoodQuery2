@@ -1,7 +1,9 @@
 package application;
 
 import java.io.File;
+import java.util.List;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -28,6 +30,7 @@ public class CenterVboxWrapper {
 	private FoodDataADT<FoodItem> foodData; // methods and fields associated with a food item
 	private TableViewWrapper tabelViewWrapper; // The table that holds the food item list
 	private QueryBarWrapper queryBarWrapper;
+	private ObservableList<String> rules;
 
 	/**
 	 * Public constructor for the center panel data
@@ -47,11 +50,13 @@ public class CenterVboxWrapper {
 		foodItemsVbox = new VBox();
 		foodItemsVbox.setId("center-vbox");
 		
+		rules = FXCollections.observableArrayList();
+		
 		//make a new table using given food data and meal info wrapper
-		this.tabelViewWrapper = new TableViewWrapper(foodData, mealInfoWrapper);
+		this.tabelViewWrapper = new TableViewWrapper(foodData, mealInfoWrapper, rules);
 		
 		//make a new bar for adding and viewing rules
-		this.queryBarWrapper = new QueryBarWrapper(comparors, labelz, foodData, tabelViewWrapper);
+		this.queryBarWrapper = new QueryBarWrapper(comparors, labelz, foodData, tabelViewWrapper, rules);
 		
 		//set title of the table
 		Label newLabel = new Label("Available Food Items");

@@ -63,6 +63,8 @@ public class ToolBarWrapper {
 			if (file != null) {
 				openFile(foodData, file.toString(), centerVboxWrapper);
 			}
+			
+			
 		});
 
 		// Pop up window to select location to save the current food list.

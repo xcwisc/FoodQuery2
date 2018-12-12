@@ -1,5 +1,7 @@
 package application;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javafx.collections.FXCollections;
@@ -32,11 +34,13 @@ public class QueryBarWrapper {
 	 * @param foodData 
 	 * @param tableViewWrapper
 	 */
-	public QueryBarWrapper(ObservableList<String> comparors, ObservableList<String> labelz, FoodDataADT<FoodItem> foodData, TableViewWrapper tableViewWrapper) {
+	public QueryBarWrapper(ObservableList<String> comparors, ObservableList<String> labelz, FoodDataADT<FoodItem> foodData, 
+			TableViewWrapper tableViewWrapper, ObservableList<String> rules) {
 		this.comparors = comparors;
 		this.labelz = labelz;
-		rules = FXCollections.observableArrayList();
+//		rules = FXCollections.observableArrayList();
 		this.foodData = foodData;
+		this.rules = rules;
 		
 		// tracks values of rule specified by user
 		RulesPopUp rulesPopUp = new RulesPopUp(rules, tableViewWrapper, foodData);
@@ -90,6 +94,16 @@ public class QueryBarWrapper {
 					compar.getSelectionModel().clearSelection();
 					numSel.clear();
 					List<FoodItem> list = foodData.filterByNutrients(rules);
+
+					
+					// Sorts list
+					Collections.sort(list, new Comparator<FoodItem>() {
+						public int compare(FoodItem f1, FoodItem f2) {
+							Character character = f1.itemName.toLowerCase().charAt(0);
+							Character oCharacter = f2.itemName.toLowerCase().charAt(0);
+							return character.compareTo(oCharacter);
+						}
+					});
 					
 					tableViewWrapper.applyRules(list);
 				}
