@@ -62,13 +62,17 @@ public class RulesPopUp {
 			if(event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2 && !rules.isEmpty()) {
 				// get the index of the removing target
 				int index = rulez.getSelectionModel().getSelectedIndex();
+				
+				// User must select a rule in the pop up to delete. Clicking an empty slot
+				// will have no result.
 				if (index != -1) {
-					
 					rules.remove(index);
 					rulez.getSelectionModel().select(-1);
+					
+					// Updates the food item table to accomodate the deleted
+					// food rule
 					tableViewWrapper.applyRules(foodData.filterByNutrients(rules));
 					List<FoodItem> list = foodData.filterByNutrients(rules);
-
 				}				
 			} 
 		});

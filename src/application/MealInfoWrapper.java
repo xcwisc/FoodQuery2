@@ -88,6 +88,8 @@ public class MealInfoWrapper {
 		list.setOnMouseClicked(event -> {
 			if(event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2 && !data.isEmpty()) {
 				int index = list.getSelectionModel().getSelectedIndex();
+				
+				// Must click valid meal item
 				if (index != -1) {
 					FoodItem foodItem = data.get(index);
 					this.calories -= foodItem.getNutrientValue("calories");
@@ -119,7 +121,6 @@ public class MealInfoWrapper {
 		this.fiberLabel = new Label(Double.toString(this.fiber));
 		this.proteinLabel = new Label(Double.toString(this.protein));
 		
-		
 		calorieCounter.getChildren().add(new Label("Total Calories: "));
 		calorieCounter.getChildren().add(caloriesLabel);
 		fatCounter.getChildren().add(new Label("Total Fat(g): "));
@@ -130,7 +131,6 @@ public class MealInfoWrapper {
 		fiberCounter.getChildren().add(fiberLabel);
 		proteinCounter.getChildren().add(new Label("Total Protein(g): "));
 		proteinCounter.getChildren().add(proteinLabel);
-		
 		
 		Button clearButton = new Button("Clear Meal");
 		VBox counter = new VBox(calorieCounter, fatCounter, carbCounter, fiberCounter, proteinCounter, clearButton);     
@@ -186,8 +186,6 @@ public class MealInfoWrapper {
 		this.carbsLabel.setText(Double.toString(this.carbs));
 		this.fiberLabel.setText(Double.toString(this.fiber));
 		this.proteinLabel.setText(Double.toString(this.protein));
-	}
-	
-	
+	}	
 }
 

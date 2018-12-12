@@ -118,10 +118,13 @@ public class AddItemPopUp {
 			catch(Exception x)
 			{System.out.println("can not have negative values");
 				return; }
+			
 			//update food data 
 			update(itemName, brand, calories, fat, carbs, fiber, protein);
 			popupwindow.close();
 		});
+		
+		// HBox container for fields, label and button in the add item pop up
 		HBox hbBtn = new HBox(10);
 		hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
 		hbBtn.getChildren().add(btn);
