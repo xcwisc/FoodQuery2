@@ -114,9 +114,9 @@ public class AddItemPopUp {
 			if (y<0)
 				throw new IllegalArgumentException("") ;
 			}
-			catch(Exception x)
-			{System.out.println("can not have negative values");
-				return; }
+			catch(Exception x) {
+				return; 
+			}
 			
 			//update food data 
 			update(itemName, brand, calories, fat, carbs, fiber, protein);
