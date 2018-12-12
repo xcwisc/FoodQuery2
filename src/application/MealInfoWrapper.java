@@ -7,6 +7,7 @@ import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -130,10 +131,28 @@ public class MealInfoWrapper {
 		proteinCounter.getChildren().add(proteinLabel);
 		
 		// add all elements into the vBox
-		mealInfo.getChildren().addAll(
-			new HBox(yourMealLabel, clickToRemoveLabel), 
-			list, calorieCounter, fatCounter, carbCounter, 
-			fiberCounter, proteinCounter);
+//		mealInfo.getChildren().addAll(
+//			new HBox(yourMealLabel, clickToRemoveLabel), 
+//			list, calorieCounter, fatCounter, carbCounter, 
+//			fiberCounter, proteinCounter);
+		
+		Button clearButton = new Button("Clear Meal");
+		VBox counter = new VBox(calorieCounter, fatCounter, carbCounter, fiberCounter, proteinCounter, clearButton);     
+        clearButton.setAlignment(Pos.TOP_RIGHT);
+        
+        clearButton.setOnAction(event -> {
+            data.clear();
+            this.calories = 0;
+            this.fat = 0;
+            this.carbs = 0;
+            this.fiber = 0;
+            this.protein = 0;
+            updateAnalysis();
+        });
+        // add all elements into the vBox
+        mealInfo.getChildren().addAll(
+            new HBox(yourMealLabel, clickToRemoveLabel),
+            list, counter);
 	}
 	
 	/**

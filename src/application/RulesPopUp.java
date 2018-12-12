@@ -51,7 +51,7 @@ public class RulesPopUp {
 		ListView<String> rulez= new ListView<String>();
 		Stage popup = new Stage();
 		popup.initModality(Modality.APPLICATION_MODAL);
-		popup.setTitle("Rules List");
+		popup.setTitle("Rules List (Double click to delete rule)");
 
 		rulez.setItems(rules);
 
