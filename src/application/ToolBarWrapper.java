@@ -64,8 +64,8 @@ public class ToolBarWrapper {
 			FileChooser fileChooser = new FileChooser();
 			fileChooser.setTitle("Save Food List");
 			File file = fileChooser.showSaveDialog(primaryStage);
-			String fileName = file.toString();
 			if (file != null) {
+				String fileName = file.toString();
 				foodData.saveFoodItems(fileName);
 			}
 		});
