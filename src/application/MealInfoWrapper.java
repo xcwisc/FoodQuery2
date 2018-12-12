@@ -71,7 +71,14 @@ public class MealInfoWrapper {
                 if (empty || item == null || item.getItemName() == null) {
                     setText(null);
                 } else {
-                    setText(item.getItemName());
+                	String raw = item.getItemName();
+    	        	String[] formatted = raw.split("(?=\\p{Upper})");
+    	        	String ans = "";
+    	        	for (String part : formatted) {
+    	        		ans += part;
+    	        		ans += " ";
+    	        	}
+                    setText(ans);
                 }
             }
         });
