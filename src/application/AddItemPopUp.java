@@ -151,7 +151,7 @@ public class AddItemPopUp {
 		String uniqueID = UUID.randomUUID().toString();
 		uniqueID = uniqueID.replace("-", "").substring(8);
 
-		// create the foodItem and insert it into the backend
+		// create the foodItem and insert it into the back end
 		FoodItem foodItem = new FoodItem(uniqueID, itemName, brand, calories, fat, carbs, fiber,
 				protein);
 		foodData.addFoodItem(foodItem);
