@@ -76,7 +76,7 @@ public class QueryBarWrapper {
 				compar.getSelectionModel().clearSelection();
 				numSel.clear();
 				List<FoodItem> list = foodData.filterByNutrients(rules);
-	
+				
 				tableViewWrapper.applyRules(list);
 				
 			}

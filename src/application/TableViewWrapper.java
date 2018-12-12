@@ -4,6 +4,7 @@ import java.util.List;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -40,8 +41,21 @@ public class TableViewWrapper {
 		                
         TableColumn<FoodItem, String> itemNameCol = new TableColumn<FoodItem, String>("Item Name");
         itemNameCol.setMinWidth(250);
-        itemNameCol.setCellValueFactory(
-                new PropertyValueFactory<FoodItem, String>("itemName"));
+//        itemNameCol.setCellValueFactory(new PropertyValueFactory<FoodItem, String>("itemName"));
+        
+        itemNameCol.setCellValueFactory(new Callback<CellDataFeatures<FoodItem, String>, ObservableValue<String>>() {
+	        public ObservableValue<String> call(CellDataFeatures<FoodItem, String> p) {
+	        	String raw = p.getValue().getItemName();
+	        	String[] formatted = raw.split("(?=\\p{Upper})");
+	        	String ans = "";
+	        	for (String part : formatted) {
+	        		ans += part;
+	        		ans += " ";
+	        	}
+	        	ObservableValue<String> result =  new SimpleStringProperty(ans);
+	        	return result;
+	        }
+	     });
  
         TableColumn<FoodItem, String> brandCol = new TableColumn<FoodItem, String>("Brand");
         brandCol.setMinWidth(100);
