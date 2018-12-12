@@ -41,8 +41,8 @@ public class TableViewWrapper {
 		                
         TableColumn<FoodItem, String> itemNameCol = new TableColumn<FoodItem, String>("Item Name");
         itemNameCol.setMinWidth(250);
-//        itemNameCol.setCellValueFactory(new PropertyValueFactory<FoodItem, String>("itemName"));
         
+        //Splits the item name by capital letters and puts it back with spaces between the words. 
         itemNameCol.setCellValueFactory(new Callback<CellDataFeatures<FoodItem, String>, ObservableValue<String>>() {
 	        public ObservableValue<String> call(CellDataFeatures<FoodItem, String> p) {
 	        	String raw = p.getValue().getItemName();
@@ -57,11 +57,13 @@ public class TableViewWrapper {
 	        }
 	     });
  
+        //Sets the Brand column. 
         TableColumn<FoodItem, String> brandCol = new TableColumn<FoodItem, String>("Brand");
         brandCol.setMinWidth(100);
         brandCol.setCellValueFactory(
                 new PropertyValueFactory<FoodItem, String>("brand"));
         
+        //Sets the Calories column. 
         TableColumn<FoodItem, Double> calCol = new TableColumn<FoodItem, Double>("Calories");
 	    calCol.setMinWidth(100);	    
 	    calCol.setCellValueFactory(new Callback<CellDataFeatures<FoodItem, Double>, ObservableValue<Double>>() {
@@ -72,6 +74,7 @@ public class TableViewWrapper {
 	        }
 	     });
 	     
+	    //Sets the Fat column. 
 	    TableColumn<FoodItem, Double> fatCol = new TableColumn<FoodItem, Double>("Fat(g)");
 	    fatCol.setMinWidth(100);	    
 	    fatCol.setCellValueFactory(new Callback<CellDataFeatures<FoodItem, Double>, ObservableValue<Double>>() {
@@ -81,7 +84,8 @@ public class TableViewWrapper {
 	        	return result;
 	        }
 	     });
-	     
+	    
+	    //Sets the Carbs column.  
 	    TableColumn<FoodItem, Double> carbsCol = new TableColumn<FoodItem, Double>("Carbs(g)");
 	    carbsCol.setMinWidth(100);	    
 	    carbsCol.setCellValueFactory(new Callback<CellDataFeatures<FoodItem, Double>, ObservableValue<Double>>() {
@@ -92,6 +96,7 @@ public class TableViewWrapper {
 	        }
 	     });
 	      
+	    //Sets the Fiber column.
 	    TableColumn<FoodItem, Double> fiberCol = new TableColumn<FoodItem, Double>("Fiber(g)");
 	    fiberCol.setMinWidth(100);	    
 	    fiberCol.setCellValueFactory(new Callback<CellDataFeatures<FoodItem, Double>, ObservableValue<Double>>() {
@@ -102,6 +107,7 @@ public class TableViewWrapper {
 	        }
 	     });
 	      
+	    //Sets the Protein column.
 	    TableColumn<FoodItem, Double> proteinCol = new TableColumn<FoodItem, Double>("Protein(g)");
 	    proteinCol.setMinWidth(100);	    
 	    proteinCol.setCellValueFactory(new Callback<CellDataFeatures<FoodItem, Double>, ObservableValue<Double>>() {
@@ -115,6 +121,8 @@ public class TableViewWrapper {
         
         table.setItems(this.data);
         table.getColumns().addAll(itemNameCol, brandCol, calCol, fatCol, carbsCol, fiberCol, proteinCol);
+        
+        //When an item is double clicked the item is added to meal list. 
         table.setOnMousePressed(event -> {
             if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
                 Node node = ((Node) event.getTarget()).getParent();
