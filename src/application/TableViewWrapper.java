@@ -60,8 +60,20 @@ public class TableViewWrapper {
         //Sets the Brand column. 
         TableColumn<FoodItem, String> brandCol = new TableColumn<FoodItem, String>("Brand");
         brandCol.setMinWidth(100);
-        brandCol.setCellValueFactory(
-                new PropertyValueFactory<FoodItem, String>("brand"));
+        //Splits the brand by capital letters and puts it back with spaces between the words. 
+        brandCol.setCellValueFactory(new Callback<CellDataFeatures<FoodItem, String>, ObservableValue<String>>() {
+	        public ObservableValue<String> call(CellDataFeatures<FoodItem, String> p) {
+	        	String raw = p.getValue().getBrand();
+	        	String[] formatted = raw.split("(?=\\p{Upper})");
+	        	String ans = "";
+	        	for (String part : formatted) {
+	        		ans += part;
+	        		ans += " ";
+	        	}
+	        	ObservableValue<String> result =  new SimpleStringProperty(ans);
+	        	return result;
+	        }
+	     });
         
         //Sets the Calories column. 
         TableColumn<FoodItem, Double> calCol = new TableColumn<FoodItem, Double>("Calories");
@@ -131,11 +143,16 @@ public class TableViewWrapper {
                     row = (TableRow) node;
                 } else {
                     // clicking on text part
-                    row = (TableRow) node.getParent();
+                	
+//                    row = (TableRow) node.getParent();
+                    row = null;
                 }
-                FoodItem food = (FoodItem) row.getItem();
-                mealInfoWrapper.add(food);
-                
+                if (row != null) {
+	                FoodItem food = (FoodItem) row.getItem();
+	                if (food != null) {
+	                mealInfoWrapper.add(food);
+	                }
+	            }                
             }
         });
 	}

@@ -26,7 +26,8 @@ public class CenterVboxWrapper {
 
 	private VBox foodItemsVbox; // VBox holds all components of the center panel of the GUI
 	private FoodDataADT<FoodItem> foodData; // methods and fields associated with a food item
-	TableViewWrapper tabelViewWrapper; // The table that holds the food item list
+	private TableViewWrapper tabelViewWrapper; // The table that holds the food item list
+	private QueryBarWrapper queryBarWrapper;
 
 	/**
 	 * Public constructor for the center panel data
@@ -50,7 +51,7 @@ public class CenterVboxWrapper {
 		this.tabelViewWrapper = new TableViewWrapper(foodData, mealInfoWrapper);
 		
 		//make a new bar for adding and viewing rules
-		QueryBarWrapper queryBarWrapper = new QueryBarWrapper(comparors, labelz, foodData, tabelViewWrapper);
+		this.queryBarWrapper = new QueryBarWrapper(comparors, labelz, foodData, tabelViewWrapper);
 		
 		//set title of the table
 		Label newLabel = new Label("Available Food Items");
@@ -84,6 +85,10 @@ public class CenterVboxWrapper {
 	 */
 	public TableViewWrapper getTabelViewWrapper() {
 		return this.tabelViewWrapper;
+	}
+	
+	public QueryBarWrapper getQueryBar() {
+		return this.queryBarWrapper;
 	}
 
 }

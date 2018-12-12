@@ -55,36 +55,44 @@ public class QueryBarWrapper {
 		
 		// adds rule when clicked on
 		addRule.setOnAction(e -> {
-			// get the value of nutrients, comparator and compare value and parse it
-			String nutrients = (String) j.getValue();
-			if ( nutrients == "Calories") {
-				nutrients = "calories";
-			} else if( nutrients == "Fat(g)") {
-				nutrients = "fat";
-			} else if( nutrients == "Carbs(g)") {
-				nutrients = "carbs";
-			} else if( nutrients == "Fiber(g)") {
-				nutrients = "fiber";
-			} else if( nutrients == "Protein(g)") {
-				nutrients = "protein";
-			}
-			String comparator = (String) compar.getValue();
-			String compareValue = numSel.getText();
-			
-			if (nutrients != null && comparator != null && compareValue != null) {
-				// formulate the rule string
-				String newRule = nutrients + " " + comparator + " " + compareValue;
-				// add new rule to the rules ObservableList
-				rules.add(newRule);
+			if (!foodData.getAllFoodItems().isEmpty()) {
+				// get the value of nutrients, comparator and compare value and parse it
+				String nutrients = (String) j.getValue();
+				if ( nutrients == "Calories") {
+					nutrients = "calories";
+				} else if( nutrients == "Fat(g)") {
+					nutrients = "fat";
+				} else if( nutrients == "Carbs(g)") {
+					nutrients = "carbs";
+				} else if( nutrients == "Fiber(g)") {
+					nutrients = "fiber";
+				} else if( nutrients == "Protein(g)") {
+					nutrients = "protein";
+				}
+				String comparator = (String) compar.getValue();
+				String compareValue = numSel.getText();
+				boolean isNumber = true;
+				try {
+				  Double.parseDouble(compareValue);
+				} catch(NumberFormatException err)
+				{
+					isNumber = false;
+				}
 				
-				// clear out the query bars
-				j.getSelectionModel().clearSelection();
-				compar.getSelectionModel().clearSelection();
-				numSel.clear();
-				List<FoodItem> list = foodData.filterByNutrients(rules);
-				
-				tableViewWrapper.applyRules(list);
-				
+				if (nutrients != null && comparator != null && compareValue != null && isNumber) {
+					// formulate the rule string
+					String newRule = nutrients + " " + comparator + " " + compareValue;
+					// add new rule to the rules ObservableList
+					rules.add(newRule);
+					
+					// clear out the query bars
+					j.getSelectionModel().clearSelection();
+					compar.getSelectionModel().clearSelection();
+					numSel.clear();
+					List<FoodItem> list = foodData.filterByNutrients(rules);
+					
+					tableViewWrapper.applyRules(list);
+				}
 			}
 		});
 		
@@ -101,6 +109,10 @@ public class QueryBarWrapper {
 	 */
 	public HBox getComponent() {
 		return this.filterHbox;
+	}
+	
+	public void resetRules() {
+		rules.clear();
 	}
 }
 

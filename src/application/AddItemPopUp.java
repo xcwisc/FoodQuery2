@@ -40,7 +40,6 @@ public class AddItemPopUp {
 	 */
 	public void display() {
 		Stage popupwindow=new Stage();
-
 		popupwindow.initModality(Modality.APPLICATION_MODAL);
 		popupwindow.setTitle("Add item");
 		
@@ -88,7 +87,7 @@ public class AddItemPopUp {
 		Button btn = new Button("Submit Item");
 		
 		btn.setOnAction(e -> {
-			
+			centerVboxWrapper.getQueryBar().resetRules();
 			//get the values that the user entered 
 			String itemName = userTextField.getText();
 			String brand = pwBox.getText();
