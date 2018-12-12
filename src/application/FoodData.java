@@ -9,6 +9,8 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
@@ -66,6 +68,16 @@ public class FoodData implements FoodDataADT<FoodItem> {
 			// create a input pipeline that parse the csv file and add the parsed foodItem to the list
 			br.lines().filter(data -> data.length() > 11).map(rule -> parser(rule))
 					.forEach(food -> this.foodItemList.add(food));
+			
+			// Sorts the list of food alphabetically before inserting
+			// into the B Plus Tree
+			Collections.sort(foodItemList, new Comparator<FoodItem>() {
+				public int compare(FoodItem f1, FoodItem f2) {
+					Character character = f1.itemName.toLowerCase().charAt(0);
+					Character oCharacter = f2.itemName.toLowerCase().charAt(0);
+					return character.compareTo(oCharacter);
+				}
+			});
 			
 			// construct 5 BPtrees
 			BPTree<Double, FoodItem> BPTreeCalories = this.indexes.get("calories");

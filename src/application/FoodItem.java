@@ -13,7 +13,7 @@ public class FoodItem {
 
 	
 	private String id; // The id of the food item.
-	private String itemName; // The name of the food item.
+	protected String itemName; // The name of the food item.
 	private String brand; // Brand of the food item
 	private HashMap<String, Double> nutrients; // Stores nutrients for a food item.
 											  // Nutrient name is the key
@@ -104,4 +104,5 @@ public class FoodItem {
 		return result;
 	}
 
+	
 }

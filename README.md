@@ -6,27 +6,5 @@
 - Bennett Majerowski (majerowski@wisc.edu, X-team 41)
 - Alex Fanner (fanner@wisc.edu, X-team 41)
 
-#### Chang Xu
-- [x] connect foodData to the gui
-- [x] tableview display
-- [x] add new fooditem
-- [X] meal analysis
-- [X] delete all the hard coded stuff
-- [X] put things into meal by double clicking/right clicking specific item
-
-#### Bennett Majerowski, Alex Fanner
-- [X] make file
-- [X] make executable.jar 
-- [X] BPtree insert
-- [X] BPtree rangeSearch
-- [X] test BPtree
-
-#### Arjun Sachar
-- [X] define the rule
-- [X] delete the rules (add to the front-end)
-
-#### Micah Jona
-- [X] save food list
-
 
 

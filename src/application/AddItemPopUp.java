@@ -87,7 +87,7 @@ public class AddItemPopUp {
 		Button btn = new Button("Submit Item");
 		
 		btn.setOnAction(e -> {
-			centerVboxWrapper.getQueryBar().resetRules();
+			//centerVboxWrapper.getQueryBar().resetRules();
 			//get the values that the user entered 
 			String itemName = userTextField.getText();
 			String brand = pwBox.getText();
