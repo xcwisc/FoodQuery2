@@ -33,6 +33,8 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			FoodDataADT<FoodItem> foodData = new FoodData();
+			
+			// Pane that covers entire GUI window
 			BorderPane root = new BorderPane();
 			
 			// initialize all the wrappers
@@ -45,6 +47,7 @@ public class Main extends Application {
 			root.setRight(mealInfoWrapper.getComponent());
 			root.setCenter(centerVboxWrapper.getComponent());
 
+			// Initializes the scene in our GUI
 			Scene scene = new Scene(root, 1150, 500);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
