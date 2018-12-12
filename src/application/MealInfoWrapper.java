@@ -62,7 +62,7 @@ public class MealInfoWrapper {
 		this.fiber = 0;
 		this.protein = 0;
 		
-		// initialize the list
+		// initialize the list of foodItems
 		list = new ListView<>(this.data);
 		list.setCellFactory(param -> new ListCell<FoodItem>() {
             @Override
@@ -84,6 +84,7 @@ public class MealInfoWrapper {
             }
         });
 		
+		// deletes foodItem when clicked on and updates meal analysis
 		list.setOnMouseClicked(event -> {
 			if(event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2 && !data.isEmpty()) {
 				int index = list.getSelectionModel().getSelectedIndex();
@@ -130,16 +131,12 @@ public class MealInfoWrapper {
 		proteinCounter.getChildren().add(new Label("Total Protein(g): "));
 		proteinCounter.getChildren().add(proteinLabel);
 		
-		// add all elements into the vBox
-//		mealInfo.getChildren().addAll(
-//			new HBox(yourMealLabel, clickToRemoveLabel), 
-//			list, calorieCounter, fatCounter, carbCounter, 
-//			fiberCounter, proteinCounter);
 		
 		Button clearButton = new Button("Clear Meal");
 		VBox counter = new VBox(calorieCounter, fatCounter, carbCounter, fiberCounter, proteinCounter, clearButton);     
         clearButton.setAlignment(Pos.TOP_RIGHT);
         
+        // clears all food items for your meal and resets meal analysis
         clearButton.setOnAction(event -> {
             data.clear();
             this.calories = 0;
@@ -193,3 +190,4 @@ public class MealInfoWrapper {
 	
 	
 }
+

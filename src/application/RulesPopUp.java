@@ -47,14 +47,17 @@ public class RulesPopUp {
 	 * Method to display the food rule data in the pop up window of the GUI
 	 */
 	public void display() {
-
+		
 		ListView<String> rulez= new ListView<String>();
+		
+		// creates stage for our different rules
 		Stage popup = new Stage();
 		popup.initModality(Modality.APPLICATION_MODAL);
 		popup.setTitle("Rules List (Double click to delete rule)");
 
 		rulez.setItems(rules);
-
+		
+		// if rule is double clicked then remove that specific rule
 		rulez.setOnMouseClicked(event -> {
 			if(event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2 && !rules.isEmpty()) {
 				// get the index of the removing target
@@ -64,7 +67,6 @@ public class RulesPopUp {
 					rules.remove(index);
 					rulez.getSelectionModel().select(-1);
 					tableViewWrapper.applyRules(foodData.filterByNutrients(rules));
-
 					List<FoodItem> list = foodData.filterByNutrients(rules);
 
 				}				
@@ -77,4 +79,3 @@ public class RulesPopUp {
 		popup.showAndWait();
 	}
 }
-

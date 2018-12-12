@@ -37,19 +37,25 @@ public class QueryBarWrapper {
 		this.labelz = labelz;
 		rules = FXCollections.observableArrayList();
 		this.foodData = foodData;
+		
+		// tracks values of rule specified by user
 		RulesPopUp rulesPopUp = new RulesPopUp(rules, tableViewWrapper, foodData);
 		ComboBox compar = new ComboBox(comparors);
+		TextField numSel = new TextField();
+		ComboBox j = new ComboBox(labelz);
+		
+		// labels for rule specifier method
 		Label selLabel = new Label("Display food item with: ");
 		selLabel.setId("filter-label");
-		TextField numSel = new TextField();
 		numSel.setPromptText("type amount");
-		ComboBox j = new ComboBox(labelz);
+		
 		filterHbox = new HBox();
 		Button addRule = new Button("Add Rule");
 		Button viewRules = new Button("View Rules");
 		
+		// adds rule when clicked on
 		addRule.setOnAction(e -> {
-			// get the value of nutrients and parse it
+			// get the value of nutrients, comparator and compare value and parse it
 			String nutrients = (String) j.getValue();
 			if ( nutrients == "Calories") {
 				nutrients = "calories";
@@ -81,7 +87,11 @@ public class QueryBarWrapper {
 				
 			}
 		});
+		
+		// displays rule when clicked on
 		viewRules.setOnAction(e -> rulesPopUp.display());
+		
+		// creates filter section on GUI
 		filterHbox.getChildren().addAll(selLabel, j, compar, numSel, addRule,viewRules);
 	}
 	
@@ -93,3 +103,5 @@ public class QueryBarWrapper {
 		return this.filterHbox;
 	}
 }
+
+
