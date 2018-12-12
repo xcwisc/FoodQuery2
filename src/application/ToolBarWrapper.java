@@ -48,35 +48,45 @@ public class ToolBarWrapper {
 		Button saveFoodList = new Button("Save Food List");
 		saveFoodList.setId("nav-bar-button");
 
+		// Pop-up window to display existing food rules when "View Rules" is clicked
 		AddItemPopUp addItemPopUp = new AddItemPopUp(centerVboxWrapper, foodData);
 		addFoodItem.setOnAction(e -> addItemPopUp.display());
 
+		// Pop up window to select a .csv file from computer that consists
+		// of a new list of food items
 		loadFoodList.setOnAction(e -> {
 			FileChooser fileChooser = new FileChooser();
 			configureFileChooser(fileChooser);
 			File file = fileChooser.showOpenDialog(primaryStage);
+			
+			// User must select valid file
 			if (file != null) {
 				openFile(foodData, file.toString(), centerVboxWrapper);
 			}
 		});
 
+		// Pop up window to select location to save the current food list.
+		// User can choose name of file.
 		saveFoodList.setOnAction(e -> {
 			FileChooser fileChooser = new FileChooser();
 			fileChooser.setTitle("Save Food List");
 			File file = fileChooser.showSaveDialog(primaryStage);
+			
+			// File must exist
 			if (file != null) {
 				String fileName = file.toString();
 				foodData.saveFoodItems(fileName);
 			}
 		});
 
+		// Initializes toolbar to go along top of GUI
 		toolBar = new ToolBar(label, addFoodItem, loadFoodList, saveFoodList);
 		toolBar.setId("nav-bar");
 
 	}
 
 	/**
-	 * Filters extension for file type to load
+	 * Filters extension for file type to load.
 	 * @param fileChooser
 	 */
 	private static void configureFileChooser(final FileChooser fileChooser) {
@@ -94,6 +104,8 @@ public class ToolBarWrapper {
 	private void openFile(FoodDataADT<FoodItem> foodData, String path, 
 			CenterVboxWrapper centerVboxWrapper) {
 		foodData.loadFoodItems(path);
+		
+		// Initializes new food item table and fills it with new food list
 		TableViewWrapper tableViewWrapper = centerVboxWrapper.getTabelViewWrapper();
 		tableViewWrapper.update();
 	}
