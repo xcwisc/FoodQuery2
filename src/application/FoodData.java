@@ -36,7 +36,6 @@ public class FoodData implements FoodDataADT<FoodItem> {
 	 * Public constructor
 	 */
 	public FoodData() {
-		// TODO : Complete
 		this.foodItemList = new ArrayList<FoodItem>();
 		this.indexes = new HashMap<String, BPTree<Double, FoodItem>>();
 		BPTree<Double, FoodItem> BPTreeCalories = new BPTree<Double, FoodItem>(3);
@@ -58,17 +57,17 @@ public class FoodData implements FoodDataADT<FoodItem> {
 	 */
 	@Override
 	public void loadFoodItems(String filePath) {
-		// TODO : Complete
 		try {
 			File inputF = new File(filePath);
 
 			InputStream inputFS = new FileInputStream(inputF);
 
 			BufferedReader br = new BufferedReader(new InputStreamReader(inputFS));
-			// the filter method may need improvement
+			// create a input pipeline that parse the csv file and add the parsed foodItem to the list
 			br.lines().filter(data -> data.length() > 11).map(rule -> parser(rule))
 					.forEach(food -> this.foodItemList.add(food));
-
+			
+			// construct 5 BPtrees
 			BPTree<Double, FoodItem> BPTreeCalories = this.indexes.get("calories");
 			for (FoodItem item : this.foodItemList) {
 				BPTreeCalories.insert(item.getNutrientValue("calories"), item);
@@ -95,16 +94,14 @@ public class FoodData implements FoodDataADT<FoodItem> {
 			}	
 			
 			br.close();
-			System.out.println(filePath);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(e);
 		}
 	}
 
-	// 556540ff5d613c9d5f5935a9,Stewarts_PremiumDarkChocolatewithMintCookieCrunch,calories,280,fat,18,carbohydrate,34,fiber,3,protein,3
+	// helper method that parse that FoodItem string and construct a foodItem instance
 	private FoodItem parser(String data) {
-		// System.out.println(data);
 		String[] parts = data.split(",");
 		String id = parts[0];
 		String[] wholeName = parts[1].split("_");
@@ -115,9 +112,9 @@ public class FoodData implements FoodDataADT<FoodItem> {
 		String carbs = parts[7];
 		String fiber = parts[9];
 		String protein = parts[11];
+		// create the FoodItem instance
 		FoodItem ans = new FoodItem(id, itemName, brand, calories, fat, carbs, fiber, protein);
 		return ans;
-		// return null;
 	}
 
 	/*
@@ -128,6 +125,7 @@ public class FoodData implements FoodDataADT<FoodItem> {
 	@Override
 	public List<FoodItem> filterByName(String substring) {
 		List<FoodItem> result = new ArrayList<FoodItem>();
+		// loop through the list to filter the food item
 		this.foodItemList.forEach(item -> {
 			if (item.getFullName().toLowerCase().contains(substring.toLowerCase())) {
 				result.add(item);
@@ -143,7 +141,6 @@ public class FoodData implements FoodDataADT<FoodItem> {
 	 */
 	@Override
 	public List<FoodItem> filterByNutrients(List<String> rules) {
-		// TODO : Complete
 		// "<nutrient> <comparator> <value>"
 		// calories > 200
 		
@@ -163,10 +160,6 @@ public class FoodData implements FoodDataADT<FoodItem> {
 			String nutrient = parts[0];
 			String comparator = parts[1];
 			double value = Double.parseDouble(parts[2]);
-			
-//			System.out.println(nutrient);
-//			System.out.println(comparator);
-//			System.out.println(value);
 			
 			// update the list
 			ans = indexesCopy.get(nutrient).rangeSearch(value, comparator);
@@ -254,16 +247,4 @@ public class FoodData implements FoodDataADT<FoodItem> {
 			System.out.println(e);
 		}
 	}
-	
-
-//	// Test
-//	public static void main(String[] args) {
-//		FoodData foodData = new FoodData();
-//		foodData.loadFoodItems("/u/c/h/changx/Desktop/foodItems.csv");
-//		foodData.saveFoodItems("/u/c/h/changx/Desktop/test.txt");
-//		List<FoodItem> filtered = foodData.filterByName("Sour");
-//		for (FoodItem item : filtered) {
-//			System.out.println(item.getString());
-//		}
-//	}
 }
