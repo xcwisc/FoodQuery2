@@ -24,7 +24,7 @@ import javafx.collections.ObservableList;
  * This class represents the backend for managing all the operations associated
  * with FoodItems
  * 
- * @author sapan (sapan@cs.wisc.edu)
+ * @author A-Team 75
  */
 public class FoodData implements FoodDataADT<FoodItem> {
 

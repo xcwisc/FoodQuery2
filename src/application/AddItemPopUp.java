@@ -159,16 +159,6 @@ public class AddItemPopUp {
 		// create the foodItem and insert it into the back end
 		FoodItem foodItem = new FoodItem(uniqueID, itemName, brand, calories, fat, carbs, fiber,
 				protein);
-		//foodData.addFoodItem(foodItem);
-		
-		// Places new food item in proper sorted spot in list
-//		Collections.sort(foodData.getAllFoodItems(), new Comparator<FoodItem>() {
-//			public int compare(FoodItem f1, FoodItem f2) {
-//				Character character = f1.itemName.toLowerCase().charAt(0);
-//				Character oCharacter = f2.itemName.toLowerCase().charAt(0);
-//				return character.compareTo(oCharacter);
-//			}
-//		});
 		
 		TableViewWrapper tableViewWrapper = this.centerVboxWrapper.getTabelViewWrapper();
 		

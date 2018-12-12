@@ -16,7 +16,7 @@ import java.util.Random;
  * due to the ability to perform log_m N lookups and
  * linear in-order traversals of the data items.
  * 
- * @author sapan (sapan@cs.wisc.edu)
+ * @author A-Team 75
  *
  * @param <K> key - expect a string that is the type of id for each item
  * @param <V> value - expect a user-defined type that stores all data for a food item
