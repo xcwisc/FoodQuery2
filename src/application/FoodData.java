@@ -79,7 +79,8 @@ public class FoodData implements FoodDataADT<FoodItem> {
 				}
 			});
 			
-			// construct 5 BPtrees
+			// Construct 5 BPtrees. Each tree corresponds to sorting 
+			// the items by one of the nutrients
 			BPTree<Double, FoodItem> BPTreeCalories = this.indexes.get("calories");
 			for (FoodItem item : this.foodItemList) {
 				BPTreeCalories.insert(item.getNutrientValue("calories"), item);
