@@ -97,6 +97,7 @@ public class AddItemPopUp {
 			String carbs = test5.getText();
 			String fiber = test7.getText();
 			String protein = test9.getText();
+			//make sure no values are negative
 			try { double y = Double.parseDouble(calories);
 			if (y<0)
 				throw new IllegalArgumentException("") ;
@@ -114,7 +115,8 @@ public class AddItemPopUp {
 				throw new IllegalArgumentException("") ;
 			}
 			catch(Exception x)
-			{return; }
+			{System.out.println("can not have negative values");
+				return; }
 			//update
 			update(itemName, brand, calories, fat, carbs, fiber, protein);
 			popupwindow.close();
